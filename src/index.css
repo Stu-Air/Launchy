@@ -1,0 +1,239 @@
+body {
+  width: 95vw;
+  margin: auto;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  background-color: #21232b;
+  color: #ddd;
+  font-family: sans-serif;
+}
+#welcome {
+  width: 95%;
+  margin: 3% auto auto auto;
+  padding: 3%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-radius: 25px;
+  /*box-shadow: 3px 3px 3px #ddd;*/
+  border: 1px solid #ddd;
+}
+
+#text {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: fit-content;
+  font-size: 4em;
+  font-weight: 400px;
+  font-family: "Playwrite HU", sans-serif;
+  margin: auto;
+  padding-bottom: 5%;
+  justify-content: center;
+}
+
+.imgTimeDate {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: auto;
+  gap: 3%;
+}
+
+.timeDate {
+  width: 350px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+
+.profile {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+#clock {
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  text-align: center;
+  font-size: 200%;
+  font-family: "Orbitron", sans-serif;
+}
+
+#date {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin: -10% auto auto auto;
+}
+
+#search {
+  width: 100%;
+  height: fit-content;
+  margin: auto;
+  align-items: center;
+  text-align: center;
+  padding: 5% 0%;
+  font-size: 30px;
+}
+#search i {
+  padding-right: 1%;
+}
+#search input {
+  width: 80%;
+  height: fit-content;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px #ddd;
+  border: #ddd;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  padding: 1%;
+  background-color: #21232b;
+  border: #21232b;
+  color: #ddd;
+  accent-color: #ddd;
+}
+
+#search button {
+  font-size: 30px;
+  padding: 0.7% 1%;
+  border-radius: 10px;
+  margin: auto auto auto 15px;
+  background-color: #21232b;
+  color: #ddd;
+  border-color: transparent;
+}
+
+.folderHeader {
+  width: 100%;
+  height: fit-content;
+  font-family: "Indie Flower", sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 5%;
+  font-size: 25px;
+  text-align: center;
+}
+
+.folder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+}
+
+.link {
+  width: 100%;
+  height: fit-content;
+  padding: 3% 5%;
+  border-radius: 10px;
+  box-shadow: 1px 1px 3px white;
+  background-color: #ffffff50;
+  backdrop-filter: 3px blur;
+  margin-top: 10%;
+  display: flex;
+  align-items: center;
+}
+.folder a {
+  text-decoration: none;
+  color: #ddd;
+}
+
+.linkImg {
+  height: fit-content;
+  width: 25px;
+  padding-right: 6px;
+}
+
+/*
+.watch {
+
+}
+
+.game {
+
+}
+
+.shop {
+
+}
+
+.tools {
+
+}
+
+.devTools {
+
+}
+*/
+.git {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 3% auto auto auto;
+}
+
+/* From Uiverse.io by vinodjangid07 */
+/* To hide the checkbox */
+#checkboxInput {
+  display: none;
+}
+
+.toggleSwitch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 50px;
+  height: 30px;
+  background-color: rgb(82, 82, 82);
+  border-radius: 20px;
+  cursor: pointer;
+  transition-duration: 0.2s;
+}
+
+.toggleSwitch::after {
+  content: "";
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  left: 5px;
+  background-color: transparent;
+  border-radius: 50%;
+  transition-duration: 0.2s;
+  box-shadow: 5px 2px 7px rgba(8, 8, 8, 0.26);
+  border: 5px solid white;
+}
+
+#checkboxInput:checked + .toggleSwitch::after {
+  transform: translateX(100%);
+  transition-duration: 0.2s;
+  background-color: white;
+}
+/* Switch background change */
+#checkboxInput:checked + .toggleSwitch {
+  background-color: rgb(148, 118, 255);
+  transition-duration: 0.2s;
+}
