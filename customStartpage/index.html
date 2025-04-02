@@ -17,34 +17,60 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <title></title>
   </head>
+
+
+
+
   <body onload="start()">
-    background colour of qogir theme with smaller current wallpaper
     <div id="welcome">
       <h1 id="text"></h1>
       <div class="imgTimeDate">
-        <img class="profile" src="https://avatars.githubusercontent.com/u/99331221"></img>
+        <div id="weather">
+          <div id="current">
+            <div id="currTemp"></div>
+            <div id="currImg"></div>
+          </div>
+          <div id="currDescription"></div>
+          <div id="days">
+            <div id="weatherDays"></div>
+            <div id="daysImg"></div>
+            <div id="daysDescription"></div>
+          </div>
+        </div>
+        <img
+          class="profile"
+          src="https://avatars.githubusercontent.com/u/99331221"
+        ></img>
         <div class="timeDate">
           <div id="clock"></div>
           <div id="date"></div>
         </div>
       </div>
     </div>
-    <p><img src="https://github-readme-stats.vercel.app/api?username=Stu-Air&show_icons=true&locale=en&layout=compact&bg_color=383c4a&text_color=7c818c&icon_color=5294e2&
-    title_color=5294e2" /></p>
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Stu-Air&layout=compact&bg_color=383c4a&text_color=7c818c&icon_color=5294e2&
-    title_color=5294e2"/>
-    <div id="weather">open weather top corner</div>
+
+ 
 
 
-
-
-
-
-    <form id="search" class="engine" action="https://www.google.com/search?q=">
+    <div class="git">
+      <img src="https://github-readme-stats.vercel.app/api?username=Stu-Air&show_icons=true&locale=en&layout=compact&bg_color=383c4a&text_color=7c818c&icon_color=5294e2&title_color=5294e2&hide_rank=true&line_height=20" />
+      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Stu-Air&layout=compact&bg_color=383c4a&text_color=7c818c&icon_color=5294e2&title_color=5294e2&card_height=500" />
+    </div>
+    <form
+      id="search"
+      class="engine"
+      action="https://www.google.com/search?q="
+    >
       <i class="fa-brands fa-google"></i>
-      <input class="search" type="text" placeholder="Google Search" required />
-      <button type="submit" id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
-   </form>
+      <input
+        class="search"
+        type="text"
+        placeholder="Google Search"
+        required
+      />
+      <button type="submit" id="searchBtn">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </form>
 
 
 
@@ -124,6 +150,66 @@
     all pages should have some animation <br />
     maybe save to json file and have object <br />
     fancy font and nice images maybe from wallpaper in dotfiles
+
+
+
+
+
+
+
+
+
+
+    <h1>Settings</h1>
+    <div class="setting">
+      <h3>Welcome section</h3>
+      <Br />
+      <div id="showToggle">
+        <p>Dark Mode </p> <input type="checkbox" id="darkMode" onclick="dark()" />
+        <label for="darkMode" class="toggleSwitch"></label>
+      </div>
+      <div id="showToggle">
+        <p>Show Welcome </p> <input type="checkbox" id="showWelcome" onclick="Welcome()" />
+        <label for="hideWeather" class="toggleSwitch"></label>
+      </div>
+      <p id="textbox">
+        Name: <input type="text" class="name"></input>
+      </p>
+      <p id="textbox">
+        Welcome background Image url: <input type="text" class="background"></input>
+      </p>
+      <p id="textbox">
+        Profile / small Image url: <input type="text" class="smallImg"></input>
+      </p>
+      <Br />
+      <Br />
+      <h4>Weather</h4>
+      <div id="showToggle">
+        <p>Show Weather</p><input type="checkbox" id="showWeather" onclick="Weather()" />
+        <label for="showWeather" class="toggleSwitch"></label>
+      </div>
+      <p id="textbox">
+        Postcode Region: <input type="text" class="postcode"></input>
+      </p>
+      <p id="textbox">
+        Open Weather Api Key: <input type="text" class="apiKey"></input>
+      </p>
+      <Br />
+      <Br />
+      <h3>Bookmarks section</h3>
+      <p id="textbox">
+        New folder / tag : <input type="text" class="apiKey"></input>
+      </p>
+      <p id="textbox">
+        New Bookmark : <input type="text" class="apiKey"></input>
+      </p>
+    </div>
+
+
+
+
+
+
     <script src="script.js"></script>
   </body>
 </html>
