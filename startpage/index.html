@@ -58,7 +58,7 @@
         class="engine"
         action="https://www.google.com/search?q="
       >
-        <i class="fa-brands fa-google"></i>
+        <div id="searchIcon"></div>
         <input
           class="search"
           type="text"
@@ -139,14 +139,10 @@
           <div class="link">https://picsvg.com</div>
           <div class="link">https://carbon.now.sh</div>
           <div class="link">https://favicon.io</div>
-
       </div>
-
     </div>
   </div>
 </section>
-
-
 
 
 
@@ -160,21 +156,21 @@
       <h1>Settings</h1>
       <h3>All</h3>
       <div id="showToggle">
-        <p>Dark Mode </p> <input type="checkbox" id="showDark" onclick="showDark()" />
+        <p>Dark Mode </p> <input type="checkbox" id="showDark" onclick="showDark()" checked />
         <label for="showDark" class="toggleSwitch"></label>
       </div>
       <Br />
       <h3>Welcome section</h3>
       <div id="showToggle">
-        <p>Show Welcome </p> <input type="checkbox" id="showWelcome" onclick="showWelcome()" />
+        <p>Show Welcome </p> <input type="checkbox" id="showWelcome" onclick="showWelcome()" checked />
         <label for="showWelcome" class="toggleSwitch"></label>
       </div>
       <div id="showToggle">
-        <p>Show Greet Message </p> <input type="checkbox" id="showGreet" onclick="showGreet()" />
+        <p>Show Greet Message </p> <input type="checkbox" id="showGreet" onclick="showGreet()" checked />
         <label for="showGreet" class="toggleSwitch"></label>
         </div>
       <div id="textbox">
-        Name: <input type="text" class="name" placeholder="Name for greet message"></input>
+        Name: <input type="text" id="name" placeholder="Name for greet message"></input>
       </div>
       <div id="textbox">
         Welcome background Image url: <input type="text" class="background" placeholder="Image link"></input>
@@ -182,21 +178,18 @@
       <div id="textbox">
         Profile / small Image url: <input type="text" class="smallImg" placeholder="Image link"></input>
         <div id="showToggle">
-          <input type="checkbox" id="showProfile" onclick="showProfile()" />
+          <input type="checkbox" id="showProfile" onclick="showProfile()" checked />
           <label for="showProfile" class="toggleSwitch"></label>
         </div>
       </div>
       <div id="showToggle">
-        <p>Show Time </p> <input type="checkbox" id="showTime" onclick="showTime()" />
-        <label for="showTime" class="toggleSwitch"></label>
+        <p>Show Time & Date </p> <input type="checkbox" id="showTimeDate" onclick="showTimeDate()" checked />
+        <label for="showTimeDate" class="toggleSwitch"></label>
         </div>
-        <div id="showToggle">
-          <p>Show Date </p> <input type="checkbox" id="showDate" onclick="showDate()" />
-          <label for="showDate" class="toggleSwitch"></label>
-          </div>
+
       <h4>Weather</h4>
       <div id="showToggle">
-        <p>Show Weather</p><input type="checkbox" id="showWeather" onclick="showWeather()" />
+        <p>Show Weather</p><input type="checkbox" id="showWeather" onclick="showWeather()" checked />
         <label for="showWeather" class="toggleSwitch"></label>
       </div>
       <div id="textbox">
@@ -210,9 +203,31 @@
       </div>
       <Br />
       <Br />
+      <h3>Git Stats & Search bar</h3>
+      <div id="textbox">
+        Github Username: <input type="text" class="gitStats" placeholder="Github Username"></input>
+        <div id="showToggle">
+          <input type="checkbox" id="showGitStats" onclick="showGitStats()" checked />
+          <label for="showGitStats" class="toggleSwitch"></label>
+        </div>
+      </div><div id="textbox">
+       Search Bar: <select name="searchBar" id="searchBar">
+       <option value="www.google.com">Google</option>
+       <option value="www.duckduckgo.com">DuckDuckGo</option>
+       <option value="search.brave.com">Brave</option>
+       <option value="search.yahoo.com">Yahoo</option>
+       <option value="www.ecosia.org">Ecosia</option>
+     </select>
+        <div id="showToggle">
+          <input type="checkbox" id="showSearchBar" onclick="showSearchBar()" checked />
+          <label for="showSearchBar" class="toggleSwitch"></label>
+        </div>
+      </div>
+      <Br />
+      <Br />
       <h3>Bookmarks section</h3>
       <div id="showToggle">
-        <p>Bookmarks</p><input type="checkbox" id="showBookmarks" onclick="showBookmarks()" />
+        <p>Bookmarks</p><input type="checkbox" id="showBookmarks" onclick="showBookmarks()" checked />
         <label for="showBookmarks" class="toggleSwitch"></label>
       </div>
       <div id="textbox">

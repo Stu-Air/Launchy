@@ -67,23 +67,31 @@ function showProfile() {
   }
   return;
 }
-
-const Time = document.getElementById("showTime");
-function showTime() {
-  if (Time.checked) {
-    document.querySelector("#clock").style.setProperty("display", "flex");
-  } else if (!Time.checked) {
-    document.querySelector("#clock").style.setProperty("display", "none");
+const timeDate = document.getElementById("showTimeDate");
+function showTimeDate() {
+  if (timeDate.checked) {
+    document.querySelector(".timeDate").style.setProperty("display", "flex");
+  } else if (!timeDate.checked) {
+    document.querySelector(".timeDate").style.setProperty("display", "none");
   }
   return;
 }
 
-const date = document.getElementById("showDate");
-function showDate() {
-  if (date.checked) {
-    document.querySelector("#date").style.setProperty("display", "flex");
-  } else if (!date.checked) {
-    document.querySelector("#date").style.setProperty("display", "none");
+const gitStats = document.getElementById("showGitStats");
+function showGitStats() {
+  if (gitStats.checked) {
+    document.querySelector("#git").style.setProperty("display", "flex");
+  } else if (!gitStats.checked) {
+    document.querySelector("#git").style.setProperty("display", "none");
+  }
+  return;
+}
+const searchBar = document.getElementById("showSearchBar");
+function showSearchBar() {
+  if (searchBar.checked) {
+    document.querySelector("#search").style.setProperty("display", "flex");
+  } else if (!searchBar.checked) {
+    document.querySelector("#search").style.setProperty("display", "none");
   }
   return;
 }
@@ -136,6 +144,7 @@ function checkTime(i) {
 }
 
 // ############################# Greeting ########################
+
 function greet() {
   if (new Date().getHours() >= 13) {
     timeOfDay = "Afternoon";
@@ -149,10 +158,22 @@ function greet() {
     timeOfDay = "Evening";
   }
 
-  document.getElementById("greet").innerHTML = `Good ${timeOfDay}, Stuart`;
+  if (new Date().getHours() >= 21) {
+    timeOfDay = "Night";
+  }
+  const greetName = document.getElementById("name").value;
+  document.getElementById("greet").innerHTML = `Good ${timeOfDay} ${greetName}`;
 }
 
 // ############################# search bar ########################
+
+const engine = document.getElementById("searchBar").value;
+document.getElementsByClassName(
+  "search"
+)[0].placeholder = `Searching with ${engine}`;
+document.getElementById(
+  "searchIcon"
+).innerHTML = `<img id="searchImg" src='https://www.google.com/s2/favicons?domain=https://${engine}/&sz=128'></img>`;
 
 // works with enter too, sshhh not sure how but its a feature!!
 document
@@ -160,7 +181,7 @@ document
   .addEventListener("click", function (event) {
     event.preventDefault();
     let query = document.getElementsByClassName("search")[0].value;
-    let url = `https://www.google.com/search?q=${query}`;
+    let url = `https://${engine}/search?q=${query}`;
     window.location = url;
   });
 
@@ -170,7 +191,7 @@ document
 localStorage.setItem(key, value);
 
 //Read Data from Local Storage
-let lastname = localStorage.getItem(key);
+localStorage.getItem(key);
 
 //Remove Data from Local Storage
 localStorage.removeItem(key);
