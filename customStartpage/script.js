@@ -2,19 +2,25 @@
 function start() {
   startTime();
   greet();
-  getWeather();
-  dark();
+  newWeather();
+  showDark();
+  showWelcome();
+  showGreet();
+  showWeather();
+  showProfile();
+  showTime();
+  showDate();
+  showBookmarks();
 }
 // ############################# Settings ########################
 
-const darkMode = document.getElementById("darkMode");
-
-function dark() {
-  if (darkMode.checked) {
+const Mode = document.getElementById("showDark");
+function showDark() {
+  if (Mode.checked) {
     /* dark */
     document.querySelector(":root").style.setProperty("--text", "#dddddd");
     document.querySelector(":root").style.setProperty("--bg", "#21232b");
-  } else if (!darkMode.checked) {
+  } else if (!Mode.checked) {
     /*  light */
     document.querySelector(":root").style.setProperty("--text", "#00000");
     document.querySelector(":root").style.setProperty("--bg", "#dddddd");
@@ -22,26 +28,74 @@ function dark() {
   return;
 }
 
-function Welcome() {
-  if (showWelcome.checked) {
-    /* dark */
-    document.querySelector(":root").style.setProperty("--text", "#dddddd");
-    document.querySelector(":root").style.setProperty("--bg", "#21232b");
-  } else if (!darkMode.checked) {
-    /*  light */
-    document.querySelector(":root").style.setProperty("--text", "#00000");
-    document.querySelector(":root").style.setProperty("--bg", "#dddddd");
+const Welcome = document.getElementById("showWelcome");
+function showWelcome() {
+  if (Welcome.checked) {
+    document.querySelector("#welcome").style.setProperty("display", "flex");
+  } else if (!Welcome.checked) {
+    document.querySelector("#welcome").style.setProperty("display", "none");
   }
   return;
 }
 
-const showWeather = document.getElementById("showWeather");
-function Weather() {
-  if (showWeather.checked) {
+const Greet = document.getElementById("showGreet");
+function showGreet() {
+  if (Greet.checked) {
+    document.querySelector("#greet").style.setProperty("display", "flex");
+  } else if (!Greet.checked) {
+    document.querySelector("#greet").style.setProperty("display", "none");
+  }
+  return;
+}
+
+const Weather = document.getElementById("showWeather");
+function showWeather() {
+  if (Weather.checked) {
     document.querySelector("#weather").style.setProperty("display", "flex");
-  } else if (!showWeather.checked) {
+  } else if (!Weather.checked) {
     document.querySelector("#weather").style.setProperty("display", "none");
   }
+  return;
+}
+
+const Profile = document.getElementById("showProfile");
+function showProfile() {
+  if (Profile.checked) {
+    document.querySelector("#profile").style.setProperty("display", "flex");
+  } else if (!Profile.checked) {
+    document.querySelector("#profile").style.setProperty("display", "none");
+  }
+  return;
+}
+
+const Time = document.getElementById("showTime");
+function showTime() {
+  if (Time.checked) {
+    document.querySelector("#clock").style.setProperty("display", "flex");
+  } else if (!Time.checked) {
+    document.querySelector("#clock").style.setProperty("display", "none");
+  }
+  return;
+}
+
+const date = document.getElementById("showDate");
+function showDate() {
+  if (date.checked) {
+    document.querySelector("#date").style.setProperty("display", "flex");
+  } else if (!date.checked) {
+    document.querySelector("#date").style.setProperty("display", "none");
+  }
+  return;
+}
+
+const Bookmarks = document.getElementById("showBookmarks");
+function showBookmarks() {
+  if (Bookmarks.checked) {
+    document.querySelector("#bookmarks").style.setProperty("display", "flex");
+  } else if (!Bookmarks.checked) {
+    document.querySelector("#bookmarks").style.setProperty("display", "none");
+  }
+  return;
 }
 
 // ############################# CLOCK ########################
@@ -95,12 +149,12 @@ function greet() {
     timeOfDay = "Evening";
   }
 
-  document.getElementById("text").innerHTML = `Good ${timeOfDay}, Stuart`;
+  document.getElementById("greet").innerHTML = `Good ${timeOfDay}, Stuart`;
 }
 
 // ############################# search bar ########################
 
-// works with enter too sshhh not sure how but its a feature!!
+// works with enter too, sshhh not sure how but its a feature!!
 document
   .getElementById("searchBtn")
   .addEventListener("click", function (event) {
@@ -112,43 +166,23 @@ document
 
 /*
 
-Save Data to Local Storage
+//Save Data to Local Storage
 localStorage.setItem(key, value);
-Read Data from Local Storage
+
+//Read Data from Local Storage
 let lastname = localStorage.getItem(key);
-Remove Data from Local Storage
+
+//Remove Data from Local Storage
 localStorage.removeItem(key);
-Remove All (Clear Local Storage)
+
+//Remove All (Clear Local Storage)
 localStorage.clear();
-*/
-
-/*
-    const apiKey = "827cd00c74aa212544f43a7c47b3922a"; // Replace with your OpenWeather API key
-    const city = "London";
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-
-    fetch(url)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Weather Data:", data);
-      })
-      .catch((error) => {
-        console.error("Error fetching weather data:", error);
-      });
-    //https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
-
-    //https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
 */
 
 // ############################# Weather API ########################
 
 function getLocation() {
-  const apiKey = "f7885e7e86b598f6edc06a41fbaaa6ab"; // Replace with your OpenWeather API key
+  //const apiKey = "f7885e7e86b598f6edc06a41fbaaa6ab"; // inactive Testing only
   const zipCode = "BT38";
   const countryCode = "GB";
   const url = `http://api.openweathermap.org/geo/1.0/zip?zip=${zipCode},${countryCode}&appid=${apiKey}`;
@@ -165,7 +199,8 @@ function getLocation() {
 
 function getWeather() {
   getLocation();
-  const apiKey = "f7885e7e86b598f6edc06a41fbaaa6ab";
+  //const apiKey = "f7885e7e86b598f6edc06a41fbaaa6ab"; // inactive Testing only
+
   const lat = localStorage.getItem("lat");
   const lon = localStorage.getItem("lon");
 

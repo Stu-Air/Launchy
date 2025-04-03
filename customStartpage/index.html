@@ -17,13 +17,11 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <title></title>
   </head>
-
-
-
-
   <body onload="start()">
-    <div id="welcome">
-      <h1 id="text"></h1>
+
+
+    <section id="welcome">
+      <h1 id="greet"></h1>
       <div class="imgTimeDate">
         <div id="weather">
           <div id="current">
@@ -38,7 +36,7 @@
           </div>
         </div>
         <img
-          class="profile"
+          id="profile"
           src="https://avatars.githubusercontent.com/u/99331221"
         ></img>
         <div class="timeDate">
@@ -46,35 +44,35 @@
           <div id="date"></div>
         </div>
       </div>
-    </div>
-
- 
-
-
-    <div class="git">
-      <img src="https://github-readme-stats.vercel.app/api?username=Stu-Air&show_icons=true&locale=en&layout=compact&bg_color=383c4a&text_color=7c818c&icon_color=5294e2&title_color=5294e2&hide_rank=true&line_height=20" />
-      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Stu-Air&layout=compact&bg_color=383c4a&text_color=7c818c&icon_color=5294e2&title_color=5294e2&card_height=500" />
-    </div>
-    <form
-      id="search"
-      class="engine"
-      action="https://www.google.com/search?q="
-    >
-      <i class="fa-brands fa-google"></i>
-      <input
-        class="search"
-        type="text"
-        placeholder="Google Search"
-        required
-      />
-      <button type="submit" id="searchBtn">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </button>
-    </form>
+    </section>
 
 
 
 
+      <div id="git">
+        <img src="https://github-readme-stats.vercel.app/api?username=Stu-Air&show_icons=true&locale=en&layout=compact&bg_color=383c4a&text_color=7c818c&icon_color=5294e2&title_color=5294e2&hide_rank=true&line_height=20" />
+        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Stu-Air&layout=compact&bg_color=383c4a&text_color=7c818c&icon_color=5294e2&title_color=5294e2&card_height=500" />
+      </div>
+      <form
+        id="search"
+        class="engine"
+        action="https://www.google.com/search?q="
+      >
+        <i class="fa-brands fa-google"></i>
+        <input
+          class="search"
+          type="text"
+          placeholder="Google Search"
+          required
+        />
+        <button type="submit" id="searchBtn">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
+
+
+
+  <section id="bookmarks">
     <div class="folder">
     <div class="folderHeader">
       <div class="read">
@@ -146,10 +144,7 @@
 
     </div>
   </div>
-    Extras to add settings page different themes, name<br />
-    all pages should have some animation <br />
-    maybe save to json file and have object <br />
-    fancy font and nice images maybe from wallpaper in dotfiles
+</section>
 
 
 
@@ -160,51 +155,73 @@
 
 
 
-    <h1>Settings</h1>
-    <div class="setting">
+
+<section id="settings">
+      <h1>Settings</h1>
+      <h3>All</h3>
+      <div id="showToggle">
+        <p>Dark Mode </p> <input type="checkbox" id="showDark" onclick="showDark()" />
+        <label for="showDark" class="toggleSwitch"></label>
+      </div>
+      <Br />
       <h3>Welcome section</h3>
-      <Br />
       <div id="showToggle">
-        <p>Dark Mode </p> <input type="checkbox" id="darkMode" onclick="dark()" />
-        <label for="darkMode" class="toggleSwitch"></label>
+        <p>Show Welcome </p> <input type="checkbox" id="showWelcome" onclick="showWelcome()" />
+        <label for="showWelcome" class="toggleSwitch"></label>
       </div>
       <div id="showToggle">
-        <p>Show Welcome </p> <input type="checkbox" id="showWelcome" onclick="Welcome()" />
-        <label for="hideWeather" class="toggleSwitch"></label>
+        <p>Show Greet Message </p> <input type="checkbox" id="showGreet" onclick="showGreet()" />
+        <label for="showGreet" class="toggleSwitch"></label>
+        </div>
+      <div id="textbox">
+        Name: <input type="text" class="name" placeholder="Name for greet message"></input>
       </div>
-      <p id="textbox">
-        Name: <input type="text" class="name"></input>
-      </p>
-      <p id="textbox">
-        Welcome background Image url: <input type="text" class="background"></input>
-      </p>
-      <p id="textbox">
-        Profile / small Image url: <input type="text" class="smallImg"></input>
-      </p>
-      <Br />
-      <Br />
+      <div id="textbox">
+        Welcome background Image url: <input type="text" class="background" placeholder="Image link"></input>
+      </div>
+      <div id="textbox">
+        Profile / small Image url: <input type="text" class="smallImg" placeholder="Image link"></input>
+        <div id="showToggle">
+          <input type="checkbox" id="showProfile" onclick="showProfile()" />
+          <label for="showProfile" class="toggleSwitch"></label>
+        </div>
+      </div>
+      <div id="showToggle">
+        <p>Show Time </p> <input type="checkbox" id="showTime" onclick="showTime()" />
+        <label for="showTime" class="toggleSwitch"></label>
+        </div>
+        <div id="showToggle">
+          <p>Show Date </p> <input type="checkbox" id="showDate" onclick="showDate()" />
+          <label for="showDate" class="toggleSwitch"></label>
+          </div>
       <h4>Weather</h4>
       <div id="showToggle">
-        <p>Show Weather</p><input type="checkbox" id="showWeather" onclick="Weather()" />
+        <p>Show Weather</p><input type="checkbox" id="showWeather" onclick="showWeather()" />
         <label for="showWeather" class="toggleSwitch"></label>
       </div>
-      <p id="textbox">
-        Postcode Region: <input type="text" class="postcode"></input>
-      </p>
-      <p id="textbox">
-        Open Weather Api Key: <input type="text" class="apiKey"></input>
-      </p>
+      <div id="textbox">
+        Postcode: <input type="text" class="postcode" placeholder="Example : E14"></input>
+      </div>
+      <div id="textbox">
+        Country Code : <input type="text" class="postcode" placeholder="Example : GB"></input>
+      </div>
+      <div id="textbox">
+        Open Weather Api Key: <input type="text" class="apiKey" placeholder="OpenWeather Api Key"></input>
+      </div>
       <Br />
       <Br />
       <h3>Bookmarks section</h3>
-      <p id="textbox">
-        New folder / tag : <input type="text" class="apiKey"></input>
-      </p>
-      <p id="textbox">
-        New Bookmark : <input type="text" class="apiKey"></input>
-      </p>
-    </div>
-
+      <div id="showToggle">
+        <p>Bookmarks</p><input type="checkbox" id="showBookmarks" onclick="showBookmarks()" />
+        <label for="showBookmarks" class="toggleSwitch"></label>
+      </div>
+      <div id="textbox">
+        New folder / tag : <input type="text" class="apiKey" placeholder="Example : GB"></input>
+      </div>
+      <div id="textbox">
+        New Bookmark : <input type="text" class="apiKey" placeholder="Example : GB"></input>
+      </div>
+  </section>
 
 
 
