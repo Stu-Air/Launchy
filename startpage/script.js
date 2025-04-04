@@ -2,15 +2,16 @@
 function start() {
   startTime();
   greet();
-  newWeather();
+  getWeather();
   showDark();
   showWelcome();
   showGreet();
   showWeather();
   showProfile();
-  showTime();
-  showDate();
+  showTimeDate();
   showBookmarks();
+  showGitStats();
+  showSearchBar();
 }
 // ############################# Settings ########################
 
@@ -20,10 +21,16 @@ function showDark() {
     /* dark */
     document.querySelector(":root").style.setProperty("--text", "#dddddd");
     document.querySelector(":root").style.setProperty("--bg", "#21232b");
+    document
+      .querySelector(":root")
+      .style.setProperty("--blurColor", "#21232b30");
   } else if (!Mode.checked) {
     /*  light */
     document.querySelector(":root").style.setProperty("--text", "#00000");
     document.querySelector(":root").style.setProperty("--bg", "#dddddd");
+    document
+      .querySelector(":root")
+      .style.setProperty("--blurColor", "#dddddd30");
   }
   return;
 }
@@ -106,12 +113,50 @@ function showBookmarks() {
   return;
 }
 
+document.getElementById("settingSave").addEventListener("click", () => {
+  localStorage.setItem("name", document.getElementById("name").value);
+  localStorage.setItem(
+    "background",
+    document.getElementById("background").value
+  );
+  localStorage.setItem("smallImg", document.getElementById("smallImg").value);
+  localStorage.setItem("owAPI", document.getElementById("apiKey").value);
+  localStorage.setItem("gitName", document.getElementById("gitStats").value);
+
+  //  const folders = [read];
+  //  localStorage.setItem("folders", JSON.stringify(folders));
+  //  localStorage.setItem(`folders:test`, JSON.stringify(read));
+});
+// set settings
+// name is already set in below in greet function
+
+document
+  .querySelector("#welcome")
+  .style.setProperty(
+    "background-image",
+    `url("${localStorage.getItem("background")}")`
+  );
+
+document.getElementById(
+  "profileImg"
+).innerHTML = `<img id="profile" src="${localStorage.getItem("smallImg")}" />`;
+// Open Weather API key is already set in weather function
+
+document.getElementById(
+  "git"
+).innerHTML = `<img src="https://github-readme-stats.vercel.app/api?username=${localStorage.getItem(
+  "gitName"
+)}&show_icons=true&locale=en&layout=compact&bg_color=383c4a&text_color=7c818c&icon_color=5294e2&title_color=5294e2&hide_rank=true&line_height=20" />
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=${localStorage.getItem(
+  "gitName"
+)}&layout=compact&bg_color=383c4a&text_color=7c818c&icon_color=5294e2&title_color=5294e2&card_height=500" />`;
+
 // ############################# CLOCK ########################
 
 // future set up for toggle 12 and 24 hour
 function startTime() {
   const today = new Date();
-  let h = today.getHours() >= 12 ? today.getHours() % 12 : today.getHours();
+  let h = today.getHours() < 12 ? today.getHours() % 12 : today.getHours();
   let m = today.getMinutes();
   let ampm = today.getHours() >= 12 ? "PM" : "AM";
   m = checkTime(m);
@@ -161,8 +206,10 @@ function greet() {
   if (new Date().getHours() >= 21) {
     timeOfDay = "Night";
   }
-  const greetName = document.getElementById("name").value;
-  document.getElementById("greet").innerHTML = `Good ${timeOfDay} ${greetName}`;
+  const greetName = !localStorage.getItem("name")
+    ? " "
+    : `, ${localStorage.getItem("name")}`;
+  document.getElementById("greet").innerHTML = `Good ${timeOfDay}${greetName}`;
 }
 
 // ############################# search bar ########################
@@ -203,9 +250,9 @@ localStorage.clear();
 // ############################# Weather API ########################
 
 function getLocation() {
-  //const apiKey = "f7885e7e86b598f6edc06a41fbaaa6ab"; // inactive Testing only
-  const zipCode = "BT38";
-  const countryCode = "GB";
+  const apiKey = `${localStorage.getItem("owAPI")}`;
+  const zipCode = document.getElementById("postcode").value;
+  const countryCode = document.getElementById("countryCode").value;
   const url = `http://api.openweathermap.org/geo/1.0/zip?zip=${zipCode},${countryCode}&appid=${apiKey}`;
   fetch(url)
     .then((response) => {
@@ -214,19 +261,14 @@ function getLocation() {
     .then((data) => {
       localStorage.setItem("lat", data.lat);
       localStorage.setItem("lon", data.lon);
-      //console.log(lat, lon); // make this save as local storage
     });
 }
 
 function getWeather() {
   getLocation();
-  //const apiKey = "f7885e7e86b598f6edc06a41fbaaa6ab"; // inactive Testing only
-
+  const apiKey = `${localStorage.getItem("owAPI")}`; // inactive Testing only
   const lat = localStorage.getItem("lat");
   const lon = localStorage.getItem("lon");
-
-  //const url = `https://api.openweathermap.org/data/3.0/onecall?lat=54.728&lon=-5.756&exclude=hourly,minutely&appid=${apiKey}&units=metric`;
-
   const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&appid=${apiKey}&units=metric`;
 
   fetch(url)
@@ -301,7 +343,7 @@ function getWeather() {
 
 //   Calling weather 4 times a day i needed.
 
-function newWeather() {
+/*function newWeather() {
   if (new Date().getHours() === 6) {
     getWeather();
   }
@@ -315,3 +357,4 @@ function newWeather() {
     getWeather();
   }
 }
+*/

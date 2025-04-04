@@ -35,10 +35,8 @@
             <div id="daysDescription"></div>
           </div>
         </div>
-        <img
-          id="profile"
-          src="https://avatars.githubusercontent.com/u/99331221"
-        ></img>
+        <div id="profileImg">
+        </div>
         <div class="timeDate">
           <div id="clock"></div>
           <div id="date"></div>
@@ -50,8 +48,6 @@
 
 
       <div id="git">
-        <img src="https://github-readme-stats.vercel.app/api?username=Stu-Air&show_icons=true&locale=en&layout=compact&bg_color=383c4a&text_color=7c818c&icon_color=5294e2&title_color=5294e2&hide_rank=true&line_height=20" />
-        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Stu-Air&layout=compact&bg_color=383c4a&text_color=7c818c&icon_color=5294e2&title_color=5294e2&card_height=500" />
       </div>
       <form
         id="search"
@@ -173,12 +169,12 @@
         Name: <input type="text" id="name" placeholder="Name for greet message"></input>
       </div>
       <div id="textbox">
-        Welcome background Image url: <input type="text" class="background" placeholder="Image link"></input>
+        Welcome background Image url: <input type="text" id="background" placeholder="Image link"></input>
       </div>
       <div id="textbox">
-        Profile / small Image url: <input type="text" class="smallImg" placeholder="Image link"></input>
+        Profile / small Image url: <input type="text" id="smallImg" placeholder="Image link"></input>
         <div id="showToggle">
-          <input type="checkbox" id="showProfile" onclick="showProfile()" checked />
+          <input type="checkbox" id="showProfile" onclick="showProfile()"/>
           <label for="showProfile" class="toggleSwitch"></label>
         </div>
       </div>
@@ -189,25 +185,25 @@
 
       <h4>Weather</h4>
       <div id="showToggle">
-        <p>Show Weather</p><input type="checkbox" id="showWeather" onclick="showWeather()" checked />
+        <p>Show Weather</p><input type="checkbox" id="showWeather" onclick="showWeather()" />
         <label for="showWeather" class="toggleSwitch"></label>
       </div>
       <div id="textbox">
-        Postcode: <input type="text" class="postcode" placeholder="Example : E14"></input>
+        Postcode: <input type="text" id="postcode" placeholder="Example : E14"></input>
       </div>
       <div id="textbox">
-        Country Code : <input type="text" class="postcode" placeholder="Example : GB"></input>
+        Country Code : <input type="text" id="countryCode" placeholder="Example : GB"></input>
       </div>
       <div id="textbox">
-        Open Weather Api Key: <input type="text" class="apiKey" placeholder="OpenWeather Api Key"></input>
+        Open Weather Api Key: <input type="text" id="apiKey" placeholder="OpenWeather Api Key"></input>
       </div>
       <Br />
       <Br />
       <h3>Git Stats & Search bar</h3>
       <div id="textbox">
-        Github Username: <input type="text" class="gitStats" placeholder="Github Username"></input>
+        Github Username: <input type="text" id="gitStats" placeholder="Github Username" ></input>
         <div id="showToggle">
-          <input type="checkbox" id="showGitStats" onclick="showGitStats()" checked />
+          <input type="checkbox" id="showGitStats" onclick="showGitStats()" />
           <label for="showGitStats" class="toggleSwitch"></label>
         </div>
       </div><div id="textbox">
@@ -231,10 +227,18 @@
         <label for="showBookmarks" class="toggleSwitch"></label>
       </div>
       <div id="textbox">
-        New folder / tag : <input type="text" class="apiKey" placeholder="Example : GB"></input>
+        New folder : <input type="text" id="folderName" placeholder="New Folder Name"></input><button>Save</button>
       </div>
       <div id="textbox">
-        New Bookmark : <input type="text" class="apiKey" placeholder="Example : GB"></input>
+        New Bookmark url : <input type="text" id="bookmarkLink" placeholder="URL Link"></input>
+      </div>
+      <div id="settingBtns">
+        <div class="box-button">
+          <div id="settingSave"><span>Save</span></div>
+        </div>
+        <div class="box-button">
+          <div id="settingReset"><span>Reset All</span></div>
+        </div>
       </div>
   </section>
 
