@@ -227,6 +227,7 @@ body {
 
 /* ################# Bookmark Section ###################### */
 #bookmarks {
+  display: flex;
   margin-top: 3%;
 }
 
@@ -338,19 +339,6 @@ body {
   box-shadow: 5px 2px 7px rgba(8, 8, 8, 0.26);
   border: 5px solid white;
 }
-/*
-.checkboxInput:checked + .toggleSwitch::after {
-  transform: translateX(100%);
-  transition-duration: 0.2s;
-  background-color: white;
-}
-
-
-.checkboxInput:checked + .toggleSwitch {
-  background-color: rgb(148, 118, 255);
-  transition-duration: 0.2s;
-}
-*/
 
 #showDark:checked + .toggleSwitch::after,
 #showWelcome:checked + .toggleSwitch::after,
@@ -400,10 +388,10 @@ body {
 
 #settingSave,
 #settingReset {
-  background-color: #dddddd;
+  background-color: var(--blurColor);
   border: 4px solid #fff;
   padding: 3px 8px;
-  color: var(--bg);
+  color: var(--text);
 }
 
 #settingSave span,

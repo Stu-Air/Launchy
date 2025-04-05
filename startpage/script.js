@@ -15,16 +15,17 @@ function start() {
 }
 // ############################# Settings ########################
 
-const Mode = document.getElementById("showDark");
 function showDark() {
-  if (Mode.checked) {
+  const Mode = localStorage.getItem("showDark");
+  if (Mode) {
     /* dark */
+    document.getElementById("showDark").setAttribute("checked", "true");
     document.querySelector(":root").style.setProperty("--text", "#dddddd");
     document.querySelector(":root").style.setProperty("--bg", "#21232b");
     document
       .querySelector(":root")
       .style.setProperty("--blurColor", "#21232b30");
-  } else if (!Mode.checked) {
+  } else if (!Mode) {
     /*  light */
     document.querySelector(":root").style.setProperty("--text", "#00000");
     document.querySelector(":root").style.setProperty("--bg", "#dddddd");
@@ -35,128 +36,220 @@ function showDark() {
   return;
 }
 
-const Welcome = document.getElementById("showWelcome");
 function showWelcome() {
-  if (Welcome.checked) {
+  const Welcome = localStorage.getItem("showWelcome");
+  document
+    .querySelector("#welcome")
+    .style.setProperty(
+      "background-image",
+      `url("${localStorage.getItem("background")}")`
+    );
+  if (Welcome) {
+    document.getElementById("showWelcome").setAttribute("checked", "true");
     document.querySelector("#welcome").style.setProperty("display", "flex");
-  } else if (!Welcome.checked) {
+  } else if (!Welcome) {
     document.querySelector("#welcome").style.setProperty("display", "none");
   }
   return;
 }
 
-const Greet = document.getElementById("showGreet");
 function showGreet() {
-  if (Greet.checked) {
+  const Greet = localStorage.getItem("showGreet");
+  if (Greet) {
+    document.getElementById("showGreet").setAttribute("checked", "true");
     document.querySelector("#greet").style.setProperty("display", "flex");
-  } else if (!Greet.checked) {
+  } else if (!Greet) {
     document.querySelector("#greet").style.setProperty("display", "none");
   }
   return;
 }
 
-const Weather = document.getElementById("showWeather");
-function showWeather() {
-  if (Weather.checked) {
-    document.querySelector("#weather").style.setProperty("display", "flex");
-  } else if (!Weather.checked) {
-    document.querySelector("#weather").style.setProperty("display", "none");
-  }
-  return;
-}
-
-const Profile = document.getElementById("showProfile");
 function showProfile() {
-  if (Profile.checked) {
+  const Profile = localStorage.getItem("showProfile");
+  if (Profile) {
+    document.getElementById("showProfile").setAttribute("checked", "true");
+    document.getElementById(
+      "profileImg"
+    ).innerHTML = `<img id="profile" src="${localStorage.getItem(
+      "smallImg"
+    )}" />`;
     document.querySelector("#profile").style.setProperty("display", "flex");
-  } else if (!Profile.checked) {
+  } else if (!Profile) {
     document.querySelector("#profile").style.setProperty("display", "none");
   }
   return;
 }
-const timeDate = document.getElementById("showTimeDate");
+
 function showTimeDate() {
-  if (timeDate.checked) {
+  const timeDate = localStorage.getItem("showTimeDate");
+  if (timeDate) {
+    document.getElementById("showTimeDate").setAttribute("checked", "true");
     document.querySelector(".timeDate").style.setProperty("display", "flex");
-  } else if (!timeDate.checked) {
+  } else if (!timeDate) {
     document.querySelector(".timeDate").style.setProperty("display", "none");
   }
   return;
 }
 
-const gitStats = document.getElementById("showGitStats");
+function showWeather() {
+  const Weather = localStorage.getItem("showWeather");
+  if (Weather) {
+    document.getElementById("showWeather").setAttribute("checked", "true");
+    document.querySelector("#weather").style.setProperty("display", "flex");
+  } else if (!Weather) {
+    document.querySelector("#weather").style.setProperty("display", "none");
+  }
+  return;
+}
+
 function showGitStats() {
-  if (gitStats.checked) {
+  const gitStats = localStorage.getItem("showGitStats");
+  if (gitStats) {
+    document.getElementById("showGitStats").setAttribute("checked", "true");
+    document.getElementById("git").innerHTML = `
+    <img src="https://github-readme-stats.vercel.app/api?username=${localStorage.getItem(
+      "gitStats"
+    )}&show_icons=true&locale=en&layout=compact&bg_color=383c4a&text_color=7c818c&icon_color=5294e2&title_color=5294e2&hide_rank=true&line_height=20" />
+    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=${localStorage.getItem(
+      "gitStats"
+    )}&layout=compact&bg_color=383c4a&text_color=7c818c&icon_color=5294e2&title_color=5294e2&card_height=500" />`;
     document.querySelector("#git").style.setProperty("display", "flex");
-  } else if (!gitStats.checked) {
+  } else if (!gitStats) {
     document.querySelector("#git").style.setProperty("display", "none");
   }
   return;
 }
-const searchBar = document.getElementById("showSearchBar");
+
+const searchBar = localStorage.getItem("showSearchBar");
 function showSearchBar() {
-  if (searchBar.checked) {
+  document.getElementsByClassName(
+    "search"
+  )[0].placeholder = `Searching with ${localStorage.getItem("engine")}`;
+  document.getElementById(
+    "searchIcon"
+  ).innerHTML = `<img id="searchImg" src='https://www.google.com/s2/favicons?domain=https://${localStorage.getItem(
+    "engine"
+  )}/&sz=128'></img>`;
+  if (searchBar) {
+    document.getElementById("showSearchBar").setAttribute("checked", "true");
     document.querySelector("#search").style.setProperty("display", "flex");
-  } else if (!searchBar.checked) {
+  } else if (!searchBar) {
     document.querySelector("#search").style.setProperty("display", "none");
   }
   return;
 }
 
-const Bookmarks = document.getElementById("showBookmarks");
+const Bookmarks = localStorage.getItem("showBookmarks");
 function showBookmarks() {
-  if (Bookmarks.checked) {
+  if (Bookmarks) {
+    document.getElementById("showBookmarks").setAttribute("checked", "true");
     document.querySelector("#bookmarks").style.setProperty("display", "flex");
-  } else if (!Bookmarks.checked) {
+  } else if (!Bookmarks) {
     document.querySelector("#bookmarks").style.setProperty("display", "none");
   }
   return;
 }
 
+document.getElementById("settingReset").addEventListener("click", () => {
+  localStorage.clear();
+
+  startTime();
+  greet();
+  getWeather();
+  showDark();
+  showWelcome();
+  showGreet();
+  showWeather();
+  showProfile();
+  showTimeDate();
+  showBookmarks();
+  showGitStats();
+  showSearchBar();
+});
+
 document.getElementById("settingSave").addEventListener("click", () => {
+  //saving toggle states
+  document.getElementById("showDark").checked
+    ? localStorage.setItem("showDark", "true")
+    : localStorage.setItem("showDark", "");
+  document.getElementById("showWelcome").checked
+    ? localStorage.setItem("showWelcome", "true")
+    : localStorage.setItem("showWelcome", "");
+  document.getElementById("showGreet").checked
+    ? localStorage.setItem("showGreet", "true")
+    : localStorage.setItem("showGreet", "");
+  document.getElementById("showProfile").checked
+    ? localStorage.setItem("showProfile", "true")
+    : localStorage.setItem("showProfile", "");
+  document.getElementById("showTimeDate").checked
+    ? localStorage.setItem("showTimeDate", "true")
+    : localStorage.setItem("showTimeDate", "");
+  document.getElementById("showWeather").checked
+    ? localStorage.setItem("showWeather", "true")
+    : localStorage.setItem("showWeather", "");
+  document.getElementById("showGitStats").checked
+    ? localStorage.setItem("showGitStats", "true")
+    : localStorage.setItem("showGitStats", "");
+  document.getElementById("showSearchBar").checked
+    ? localStorage.setItem("showSearchBar", "true")
+    : localStorage.setItem("showSearchBar", "");
+  document.getElementById("showBookmarks").checked
+    ? localStorage.setItem("showBookmarks", "true")
+    : localStorage.setItem("showBookmarks", "");
+
+  //saving text boxes values
   localStorage.setItem("name", document.getElementById("name").value);
   localStorage.setItem(
     "background",
     document.getElementById("background").value
   );
   localStorage.setItem("smallImg", document.getElementById("smallImg").value);
-  localStorage.setItem("owAPI", document.getElementById("apiKey").value);
-  localStorage.setItem("gitName", document.getElementById("gitStats").value);
-
-  //  const folders = [read];
-  //  localStorage.setItem("folders", JSON.stringify(folders));
-  //  localStorage.setItem(`folders:test`, JSON.stringify(read));
-});
-// set settings
-// name is already set in below in greet function
-
-document
-  .querySelector("#welcome")
-  .style.setProperty(
-    "background-image",
-    `url("${localStorage.getItem("background")}")`
+  localStorage.setItem("postcode", document.getElementById("postcode").value);
+  localStorage.setItem(
+    "countryCode",
+    document.getElementById("countryCode").value
   );
+  localStorage.setItem("apiKey", document.getElementById("apiKey").value);
+  localStorage.setItem("gitStats", document.getElementById("gitStats").value);
+  localStorage.setItem("engine", document.getElementById("searchBar").value);
 
-document.getElementById(
-  "profileImg"
-).innerHTML = `<img id="profile" src="${localStorage.getItem("smallImg")}" />`;
-// Open Weather API key is already set in weather function
+  //const todos = [todo1, todo2, todo3];
+  //localStorage.setItem("todos", JSON.stringify(todos));
+  //localStorage.setItem('todos:1', JSON.stringify(todo1));
+  //localStorage.setItem('todos:2', JSON.stringify(todo2));
 
-document.getElementById(
-  "git"
-).innerHTML = `<img src="https://github-readme-stats.vercel.app/api?username=${localStorage.getItem(
-  "gitName"
-)}&show_icons=true&locale=en&layout=compact&bg_color=383c4a&text_color=7c818c&icon_color=5294e2&title_color=5294e2&hide_rank=true&line_height=20" />
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=${localStorage.getItem(
-  "gitName"
-)}&layout=compact&bg_color=383c4a&text_color=7c818c&icon_color=5294e2&title_color=5294e2&card_height=500" />`;
+  startTime();
+  greet();
+  getWeather();
+  showDark();
+  showWelcome();
+  showGreet();
+  showWeather();
+  showProfile();
+  showTimeDate();
+  showBookmarks();
+  showGitStats();
+  showSearchBar();
+});
+
+// displaying settings
+
+document.getElementById("name").value = localStorage.getItem("name");
+document.getElementById("background").value =
+  localStorage.getItem("background");
+document.getElementById("smallImg").value = localStorage.getItem("smallImg");
+document.getElementById("postcode").value = localStorage.getItem("postcode");
+document.getElementById("countryCode").value =
+  localStorage.getItem("countryCode");
+document.getElementById("apiKey").value = localStorage.getItem("apiKey");
+document.getElementById("gitStats").value = localStorage.getItem("gitStats");
 
 // ############################# CLOCK ########################
 
 // future set up for toggle 12 and 24 hour
 function startTime() {
   const today = new Date();
-  let h = today.getHours() < 12 ? today.getHours() % 12 : today.getHours();
+  let h = today.getHours() % 12 === 12 ? 12 : today.getHours() % 12;
   let m = today.getMinutes();
   let ampm = today.getHours() >= 12 ? "PM" : "AM";
   m = checkTime(m);
@@ -173,7 +266,7 @@ function startTime() {
     "Saturday",
     "Sunday",
   ];
-  let day = today.getDate();
+  let day = String(today.getDate()).padStart(2, "0");
   let month = String(today.getMonth() + 1).padStart(2, "0");
   let year = today.getFullYear();
   document.getElementById("date").innerHTML = `<h2> ${
@@ -214,13 +307,7 @@ function greet() {
 
 // ############################# search bar ########################
 
-const engine = document.getElementById("searchBar").value;
-document.getElementsByClassName(
-  "search"
-)[0].placeholder = `Searching with ${engine}`;
-document.getElementById(
-  "searchIcon"
-).innerHTML = `<img id="searchImg" src='https://www.google.com/s2/favicons?domain=https://${engine}/&sz=128'></img>`;
+//const engine = localStorage.getItem("engine");
 
 // works with enter too, sshhh not sure how but its a feature!!
 document
@@ -250,7 +337,7 @@ localStorage.clear();
 // ############################# Weather API ########################
 
 function getLocation() {
-  const apiKey = `${localStorage.getItem("owAPI")}`;
+  const apiKey = `${localStorage.getItem("apiKey")}`;
   const zipCode = document.getElementById("postcode").value;
   const countryCode = document.getElementById("countryCode").value;
   const url = `http://api.openweathermap.org/geo/1.0/zip?zip=${zipCode},${countryCode}&appid=${apiKey}`;
@@ -266,7 +353,7 @@ function getLocation() {
 
 function getWeather() {
   getLocation();
-  const apiKey = `${localStorage.getItem("owAPI")}`; // inactive Testing only
+  const apiKey = `${localStorage.getItem("apiKey")}`; // inactive Testing only
   const lat = localStorage.getItem("lat");
   const lon = localStorage.getItem("lon");
   const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&appid=${apiKey}&units=metric`;
