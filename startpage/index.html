@@ -19,6 +19,10 @@
   </head>
   <body onload="start()">
 
+    <div id="menuOpen" onclick="settingOpen()"><i class="fa-solid fa-bars"></i></div>
+
+
+
 
     <section id="welcome">
       <h1 id="greet"></h1>
@@ -142,105 +146,106 @@
 
 
 
+<section id="settingsBg">
+  <div id="settings">
+  <div id="menuClose" onclick="settingClose()"><i class="fa-solid fa-bars"></i></div>
+  <h1>Settings</h1>
+  <h3>All</h3>
+  <div id="showToggle">
+    <p>Dark Mode </p> <input type="checkbox" id="showDark" />
+    <label for="showDark" class="toggleSwitch"></label>
+  </div>
+  <Br />
+  <h3>Welcome section</h3>
+  <div id="showToggle">
+    <p>Show Welcome </p> <input type="checkbox" id="showWelcome" />
+    <label for="showWelcome" class="toggleSwitch"></label>
+  </div>
+  <div id="showToggle">
+    <p>Show Greet Message </p> <input type="checkbox" id="showGreet" />
+    <label for="showGreet" class="toggleSwitch"></label>
+    </div>
+  <div id="textbox">
+    Name: <input type="text" id="name" placeholder="Name for greet message"></input>
+  </div>
+  <div id="textbox">
+    Welcome background Image url: <input type="text" id="background" placeholder="Image link"></input>
+  </div>
+  <div id="textbox">
+    Profile / small Image url: <input type="text" id="smallImg" placeholder="Image link"></input>
+    <div id="showToggle">
+      <input type="checkbox" id="showProfile" />
+      <label for="showProfile" class="toggleSwitch"></label>
+    </div>
+  </div>
+  <div id="showToggle">
+    <p>Show Time & Date </p> <input type="checkbox" id="showTimeDate" />
+    <label for="showTimeDate" class="toggleSwitch"></label>
+    </div>
+
+  <h4>Weather</h4>
+  <div id="showToggle">
+    <p>Show Weather</p><input type="checkbox" id="showWeather" />
+    <label for="showWeather" class="toggleSwitch"></label>
+  </div>
+  <div id="textbox">
+    Postcode: <input type="text" id="postcode" placeholder="Example : E14"></input>
+  </div>
+  <div id="textbox">
+    Country Code : <input type="text" id="countryCode" placeholder="Example : GB"></input>
+  </div>
+  <div id="textbox">
+    Open Weather Api Key: <input type="text" id="apiKey" placeholder="OpenWeather Api Key"></input>
+  </div>
+  <Br />
+  <Br />
+  <h3>Git Stats & Search bar</h3>
+  <div id="textbox">
+    Github Username: <input type="text" id="gitStats" placeholder="Github Username" ></input>
+    <div id="showToggle">
+      <input type="checkbox" id="showGitStats" />
+      <label for="showGitStats" class="toggleSwitch"></label>
+    </div>
+  </div><div id="textbox">
+   Search Bar: <select name="searchBar" id="searchBar">
+   <option value="www.google.com">Google</option>
+   <option value="www.duckduckgo.com">DuckDuckGo</option>
+   <option value="search.brave.com">Brave</option>
+   <option value="search.yahoo.com">Yahoo</option>
+   <option value="www.ecosia.org">Ecosia</option>
+ </select>
+    <div id="showToggle">
+      <input type="checkbox" id="showSearchBar" />
+      <label for="showSearchBar" class="toggleSwitch"></label>
+    </div>
+  </div>
+  <Br />
+  <Br />
+  <h3>Bookmarks section</h3>
+  <div id="showToggle">
+    <p>Bookmarks</p><input type="checkbox" id="showBookmarks" />
+    <label for="showBookmarks" class="toggleSwitch"></label>
+  </div>
+  <div id="textbox">
+    New folder : <input type="text" id="folderName" placeholder="New Folder Name"></input><button>Save</button>
+  </div>
+  <div id="textbox">
+    New Bookmark url : <input type="text" id="bookmarkLink" placeholder="URL Link"></input>
+  </div>
+  <div id="settingBtns">
+    <div class="box-button">
+      <div id="settingSave"><span>Save</span></div>
+    </div>
+    <div class="box-button">
+      <div id="settingReset"><span>Reset All</span></div>
+    </div>
+  </div>
+</div>
+</section>
 
 
 
 
-
-
-<section id="settings">
-      <h1>Settings</h1>
-      <h3>All</h3>
-      <div id="showToggle">
-        <p>Dark Mode </p> <input type="checkbox" id="showDark" onclick="showDark()" />
-        <label for="showDark" class="toggleSwitch"></label>
-      </div>
-      <Br />
-      <h3>Welcome section</h3>
-      <div id="showToggle">
-        <p>Show Welcome </p> <input type="checkbox" id="showWelcome" onclick="showWelcome()" />
-        <label for="showWelcome" class="toggleSwitch"></label>
-      </div>
-      <div id="showToggle">
-        <p>Show Greet Message </p> <input type="checkbox" id="showGreet" onclick="showGreet()" />
-        <label for="showGreet" class="toggleSwitch"></label>
-        </div>
-      <div id="textbox">
-        Name: <input type="text" id="name" placeholder="Name for greet message"></input>
-      </div>
-      <div id="textbox">
-        Welcome background Image url: <input type="text" id="background" placeholder="Image link"></input>
-      </div>
-      <div id="textbox">
-        Profile / small Image url: <input type="text" id="smallImg" placeholder="Image link"></input>
-        <div id="showToggle">
-          <input type="checkbox" id="showProfile" onclick="showProfile()"/>
-          <label for="showProfile" class="toggleSwitch"></label>
-        </div>
-      </div>
-      <div id="showToggle">
-        <p>Show Time & Date </p> <input type="checkbox" id="showTimeDate" onclick="showTimeDate()" />
-        <label for="showTimeDate" class="toggleSwitch"></label>
-        </div>
-
-      <h4>Weather</h4>
-      <div id="showToggle">
-        <p>Show Weather</p><input type="checkbox" id="showWeather" onclick="showWeather()" />
-        <label for="showWeather" class="toggleSwitch"></label>
-      </div>
-      <div id="textbox">
-        Postcode: <input type="text" id="postcode" placeholder="Example : E14"></input>
-      </div>
-      <div id="textbox">
-        Country Code : <input type="text" id="countryCode" placeholder="Example : GB"></input>
-      </div>
-      <div id="textbox">
-        Open Weather Api Key: <input type="text" id="apiKey" placeholder="OpenWeather Api Key"></input>
-      </div>
-      <Br />
-      <Br />
-      <h3>Git Stats & Search bar</h3>
-      <div id="textbox">
-        Github Username: <input type="text" id="gitStats" placeholder="Github Username" ></input>
-        <div id="showToggle">
-          <input type="checkbox" id="showGitStats" onclick="showGitStats()" />
-          <label for="showGitStats" class="toggleSwitch"></label>
-        </div>
-      </div><div id="textbox">
-       Search Bar: <select name="searchBar" id="searchBar">
-       <option value="www.google.com">Google</option>
-       <option value="www.duckduckgo.com">DuckDuckGo</option>
-       <option value="search.brave.com">Brave</option>
-       <option value="search.yahoo.com">Yahoo</option>
-       <option value="www.ecosia.org">Ecosia</option>
-     </select>
-        <div id="showToggle">
-          <input type="checkbox" id="showSearchBar" onclick="showSearchBar()" />
-          <label for="showSearchBar" class="toggleSwitch"></label>
-        </div>
-      </div>
-      <Br />
-      <Br />
-      <h3>Bookmarks section</h3>
-      <div id="showToggle">
-        <p>Bookmarks</p><input type="checkbox" id="showBookmarks" onclick="showBookmarks()" />
-        <label for="showBookmarks" class="toggleSwitch"></label>
-      </div>
-      <div id="textbox">
-        New folder : <input type="text" id="folderName" placeholder="New Folder Name"></input><button>Save</button>
-      </div>
-      <div id="textbox">
-        New Bookmark url : <input type="text" id="bookmarkLink" placeholder="URL Link"></input>
-      </div>
-      <div id="settingBtns">
-        <div class="box-button">
-          <div id="settingSave"><span>Save</span></div>
-        </div>
-        <div class="box-button">
-          <div id="settingReset"><span>Reset All</span></div>
-        </div>
-      </div>
-  </section>
 
 
 

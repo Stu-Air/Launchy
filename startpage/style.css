@@ -274,13 +274,42 @@ body {
 }
 
 /* ################# Settings Section ######################*/
-#settings {
-  width: 100vw;
-  padding: 5%;
-  backdrop-filter: blur(3px);
-  background-color: #ffffff10;
-  border: solid;
+#menuOpen {
+  font-size: x-large;
+  margin: 3vw auto auto 92vw;
 }
+#menuClose {
+  font-size: x-large;
+  position: relative;
+  top: 5.1%;
+  left: 90%;
+}
+
+#settings {
+  width: 95vw;
+  height: 100vh;
+  font-size: large;
+  margin: auto;
+  padding: 9%;
+  align-items: left;
+  justify-content: center;
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 0%;
+}
+
+#settingsBg {
+  width: 100vw;
+  height: 180%;
+  margin: 0%;
+  display: none;
+  backdrop-filter: blur(10px);
+  background-color: var(--blurColor);
+  position: absolute;
+  top: 0%;
+}
+
 #settings h3 {
   text-decoration: underline;
 }
@@ -321,7 +350,7 @@ body {
   position: relative;
   width: 50px;
   height: 30px;
-  background-color: rgb(82, 82, 82);
+  background-color: #53504d;
   border-radius: 20px;
   cursor: pointer;
   transition-duration: 0.2s;
@@ -364,7 +393,7 @@ body {
 #showBookmarks:checked + .toggleSwitch,
 #showGitStats:checked + .toggleSwitch,
 #showSearchBar:checked + .toggleSwitch {
-  background-color: rgb(148, 118, 255);
+  background-color: #e95420;
   transition-duration: 0.2s;
 }
 

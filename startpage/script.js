@@ -1,32 +1,47 @@
 // ############################# Onload Functions ########################
 function start() {
   startTime();
+  defaultLayout();
   greet();
   getWeather();
   showDark();
   showWelcome();
   showGreet();
-  showWeather();
-  showProfile();
   showTimeDate();
-  showBookmarks();
+  showWeather();
   showGitStats();
   showSearchBar();
+  showBookmarks();
+  showProfile();
 }
 // ############################# Settings ########################
+
+function settingOpen() {
+  document.querySelector("#settingsBg").style.setProperty("z-index", "1");
+  document.querySelector("#settingsBg").style.setProperty("display", "flex");
+  document.querySelector("#settings").style.setProperty("z-index", "2");
+  document.querySelector("#settings").style.setProperty("display", "flex");
+}
+function settingClose() {
+  document.querySelector("#settingsBg").style.setProperty("z-index", "-1");
+  document.querySelector("#settingsBg").style.setProperty("display", "none");
+  document.querySelector("#settings").style.setProperty("z-index", "-2");
+  document.querySelector("#settings").style.setProperty("display", "none");
+}
 
 function showDark() {
   const Mode = localStorage.getItem("showDark");
   if (Mode) {
-    /* dark */
-    document.getElementById("showDark").setAttribute("checked", "true");
+    // dark
+    document.getElementById("showDark").checked = true;
     document.querySelector(":root").style.setProperty("--text", "#dddddd");
     document.querySelector(":root").style.setProperty("--bg", "#21232b");
     document
       .querySelector(":root")
       .style.setProperty("--blurColor", "#21232b30");
   } else if (!Mode) {
-    /*  light */
+    //  light
+    document.getElementById("showDark").checked = false;
     document.querySelector(":root").style.setProperty("--text", "#00000");
     document.querySelector(":root").style.setProperty("--bg", "#dddddd");
     document
@@ -38,43 +53,46 @@ function showDark() {
 
 function showWelcome() {
   const Welcome = localStorage.getItem("showWelcome");
+  if (Welcome) {
+    document.getElementById("showWelcome").checked = true;
+    document.querySelector("#welcome").style.setProperty("display", "flex");
+  } else if (!Welcome) {
+    document.getElementById("showWelcome").checked = false;
+    document.querySelector("#welcome").style.setProperty("display", "none");
+  }
   document
     .querySelector("#welcome")
     .style.setProperty(
       "background-image",
       `url("${localStorage.getItem("background")}")`
     );
-  if (Welcome) {
-    document.getElementById("showWelcome").setAttribute("checked", "true");
-    document.querySelector("#welcome").style.setProperty("display", "flex");
-  } else if (!Welcome) {
-    document.querySelector("#welcome").style.setProperty("display", "none");
-  }
   return;
 }
 
 function showGreet() {
   const Greet = localStorage.getItem("showGreet");
   if (Greet) {
-    document.getElementById("showGreet").setAttribute("checked", "true");
+    document.getElementById("showGreet").checked = true;
     document.querySelector("#greet").style.setProperty("display", "flex");
   } else if (!Greet) {
+    document.getElementById("showGreet").checked = false;
     document.querySelector("#greet").style.setProperty("display", "none");
   }
   return;
 }
 
 function showProfile() {
-  const Profile = localStorage.getItem("showProfile");
-  if (Profile) {
-    document.getElementById("showProfile").setAttribute("checked", "true");
-    document.getElementById(
-      "profileImg"
-    ).innerHTML = `<img id="profile" src="${localStorage.getItem(
-      "smallImg"
-    )}" />`;
+  const profile = localStorage.getItem("showProfile");
+  document.getElementById(
+    "profileImg"
+  ).innerHTML = `<img id="profile" src="${localStorage.getItem(
+    "smallImg"
+  )}" />`;
+  if (profile) {
+    document.getElementById("showProfile").checked = true;
     document.querySelector("#profile").style.setProperty("display", "flex");
-  } else if (!Profile) {
+  } else if (!profile) {
+    document.getElementById("showProfile").checked = false;
     document.querySelector("#profile").style.setProperty("display", "none");
   }
   return;
@@ -83,9 +101,10 @@ function showProfile() {
 function showTimeDate() {
   const timeDate = localStorage.getItem("showTimeDate");
   if (timeDate) {
-    document.getElementById("showTimeDate").setAttribute("checked", "true");
+    document.getElementById("showTimeDate").checked = true;
     document.querySelector(".timeDate").style.setProperty("display", "flex");
   } else if (!timeDate) {
+    document.getElementById("showTimeDate").checked = false;
     document.querySelector(".timeDate").style.setProperty("display", "none");
   }
   return;
@@ -94,9 +113,10 @@ function showTimeDate() {
 function showWeather() {
   const Weather = localStorage.getItem("showWeather");
   if (Weather) {
-    document.getElementById("showWeather").setAttribute("checked", "true");
+    document.getElementById("showWeather").checked = true;
     document.querySelector("#weather").style.setProperty("display", "flex");
   } else if (!Weather) {
+    document.getElementById("showWeather").checked = false;
     document.querySelector("#weather").style.setProperty("display", "none");
   }
   return;
@@ -105,7 +125,7 @@ function showWeather() {
 function showGitStats() {
   const gitStats = localStorage.getItem("showGitStats");
   if (gitStats) {
-    document.getElementById("showGitStats").setAttribute("checked", "true");
+    document.getElementById("showGitStats").checked = true;
     document.getElementById("git").innerHTML = `
     <img src="https://github-readme-stats.vercel.app/api?username=${localStorage.getItem(
       "gitStats"
@@ -115,12 +135,12 @@ function showGitStats() {
     )}&layout=compact&bg_color=383c4a&text_color=7c818c&icon_color=5294e2&title_color=5294e2&card_height=500" />`;
     document.querySelector("#git").style.setProperty("display", "flex");
   } else if (!gitStats) {
+    document.getElementById("showGitStats").checked = false;
     document.querySelector("#git").style.setProperty("display", "none");
   }
   return;
 }
 
-const searchBar = localStorage.getItem("showSearchBar");
 function showSearchBar() {
   document.getElementsByClassName(
     "search"
@@ -130,42 +150,51 @@ function showSearchBar() {
   ).innerHTML = `<img id="searchImg" src='https://www.google.com/s2/favicons?domain=https://${localStorage.getItem(
     "engine"
   )}/&sz=128'></img>`;
+  localStorage.setItem("engine", document.getElementById("searchBar").value);
+  const searchBar = localStorage.getItem("showSearchBar");
+  console.log("function showSearchBar");
   if (searchBar) {
-    document.getElementById("showSearchBar").setAttribute("checked", "true");
+    document.getElementById("showSearchBar").checked = true;
     document.querySelector("#search").style.setProperty("display", "flex");
   } else if (!searchBar) {
+    document.getElementById("showSearchBar").checked = false;
     document.querySelector("#search").style.setProperty("display", "none");
   }
   return;
 }
 
-const Bookmarks = localStorage.getItem("showBookmarks");
 function showBookmarks() {
+  const Bookmarks = localStorage.getItem("showBookmarks");
   if (Bookmarks) {
-    document.getElementById("showBookmarks").setAttribute("checked", "true");
+    document.getElementById("showBookmarks").checked = true;
     document.querySelector("#bookmarks").style.setProperty("display", "flex");
   } else if (!Bookmarks) {
+    document.getElementById("showBookmarks").checked = false;
     document.querySelector("#bookmarks").style.setProperty("display", "none");
   }
   return;
 }
 
-document.getElementById("settingReset").addEventListener("click", () => {
+function defaultLayout() {
   localStorage.clear();
-
-  startTime();
-  greet();
-  getWeather();
+  localStorage.setItem("showDark", "true");
+  localStorage.setItem("showWelcome", "true");
+  localStorage.setItem("showGreet", "true");
+  localStorage.setItem("showTimeDate", "true");
+  localStorage.setItem("showSearchBar", "true");
+  localStorage.setItem("engine", document.getElementById("searchBar").value);
   showDark();
   showWelcome();
   showGreet();
-  showWeather();
-  showProfile();
   showTimeDate();
-  showBookmarks();
-  showGitStats();
   showSearchBar();
-});
+  settingClose();
+}
+
+//reset should be a default layout
+document
+  .getElementById("settingReset")
+  .addEventListener("click", defaultLayout());
 
 document.getElementById("settingSave").addEventListener("click", () => {
   //saving toggle states
@@ -218,18 +247,16 @@ document.getElementById("settingSave").addEventListener("click", () => {
   //localStorage.setItem('todos:1', JSON.stringify(todo1));
   //localStorage.setItem('todos:2', JSON.stringify(todo2));
 
-  startTime();
-  greet();
-  getWeather();
   showDark();
   showWelcome();
   showGreet();
-  showWeather();
-  showProfile();
   showTimeDate();
-  showBookmarks();
+  showWeather();
   showGitStats();
   showSearchBar();
+  showBookmarks();
+  showProfile();
+  settingClose();
 });
 
 // displaying settings
@@ -249,7 +276,7 @@ document.getElementById("gitStats").value = localStorage.getItem("gitStats");
 // future set up for toggle 12 and 24 hour
 function startTime() {
   const today = new Date();
-  let h = today.getHours() % 12 === 12 ? 12 : today.getHours() % 12;
+  let h = today.getHours() > 12 ? today.getHours() % 12 : today.getHours();
   let m = today.getMinutes();
   let ampm = today.getHours() >= 12 ? "PM" : "AM";
   m = checkTime(m);
@@ -258,19 +285,20 @@ function startTime() {
   setTimeout(startTime, 1000);
 
   const weekday = [
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
     "Saturday",
-    "Sunday",
   ];
   let day = String(today.getDate()).padStart(2, "0");
   let month = String(today.getMonth() + 1).padStart(2, "0");
   let year = today.getFullYear();
+
   document.getElementById("date").innerHTML = `<h2> ${
-    weekday[today.getDay() - 1]
+    weekday[today.getDay()]
   }, ${day}/${month}/${year}</h2>`;
 }
 
@@ -307,15 +335,13 @@ function greet() {
 
 // ############################# search bar ########################
 
-//const engine = localStorage.getItem("engine");
-
 // works with enter too, sshhh not sure how but its a feature!!
 document
   .getElementById("searchBtn")
   .addEventListener("click", function (event) {
     event.preventDefault();
     let query = document.getElementsByClassName("search")[0].value;
-    let url = `https://${engine}/search?q=${query}`;
+    let url = `https://${localStorage.getItem("engine")}/search?q=${query}`;
     window.location = url;
   });
 
