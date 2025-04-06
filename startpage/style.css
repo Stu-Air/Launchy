@@ -2,6 +2,7 @@
   --text: #ddd;
   --bg: #21232b;
   --blurColor: #21232b30;
+  --borders: #ddd;
 }
 
 body {
@@ -21,7 +22,7 @@ body {
 
 #welcome {
   width: 95%;
-  margin: 3% auto auto auto;
+  margin: 13% auto auto auto;
   padding: 3%;
   display: flex;
   flex-wrap: wrap;
@@ -30,7 +31,7 @@ body {
   text-align: center;
   border-radius: 25px;
   /*box-shadow: 3px 3px 3px #ddd;*/
-  border: 1px solid #ddd;
+  border: 1px solid;
   background-image: transparent;
   background-size: cover;
   background-position: center;
@@ -202,8 +203,8 @@ body {
   width: 80%;
   height: fit-content;
   border-radius: 10px;
-  box-shadow: 2px 2px 2px var(--text);
-  border: var(--text);
+  box-shadow: 2px 2px 2px;
+  border: 1px solid var(--text);
   justify-content: center;
   align-items: center;
   font-size: 30px;
@@ -221,7 +222,7 @@ body {
   margin: auto;
   background-color: var(--bg);
   color: var(--text);
-  box-shadow: 2px 2px 2px var(--text);
+  box-shadow: 2px 2px 2px;
   border-color: transparent;
 }
 
@@ -276,12 +277,17 @@ body {
 /* ################# Settings Section ######################*/
 #menuOpen {
   font-size: x-large;
-  margin: 3vw auto auto 92vw;
+  position: absolute;
+  margin: 3% 0% 0% 0%;
+  top: 0%;
+  left: 90%;
 }
+
 #menuClose {
   font-size: x-large;
-  position: relative;
-  top: 5.1%;
+  position: absolute;
+  margin: 3% 0% 0% 0%;
+  top: 0%;
   left: 90%;
 }
 
@@ -289,14 +295,12 @@ body {
   width: 95vw;
   height: 100vh;
   font-size: large;
-  margin: auto;
-  padding: 9%;
+  margin: 19% auto auto 9%;
   align-items: left;
   justify-content: center;
   display: none;
   flex-direction: column;
   position: absolute;
-  top: 0%;
 }
 
 #settingsBg {
@@ -308,6 +312,16 @@ body {
   background-color: var(--blurColor);
   position: absolute;
   top: 0%;
+  animation-duration: 3s;
+  animation-name: slidein;
+}
+@keyframes slidein {
+  from {
+    margin-right: 200%;
+  }
+  to {
+    margin-right: 0%;
+  }
 }
 
 #settings h3 {

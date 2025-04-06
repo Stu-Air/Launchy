@@ -1,7 +1,6 @@
 // ############################# Onload Functions ########################
 function start() {
   startTime();
-  defaultLayout();
   greet();
   getWeather();
   showDark();
@@ -39,14 +38,36 @@ function showDark() {
     document
       .querySelector(":root")
       .style.setProperty("--blurColor", "#21232b30");
+    document.getElementById("git").innerHTML = `
+      <a href="https://github.com/${localStorage.getItem(
+        "gitStats"
+      )}" ><img src="https://github-readme-stats.vercel.app/api?username=${localStorage.getItem(
+      "gitStats"
+    )}&show_icons=true&locale=en&layout=compact&bg_color=21232b&border_color=21232b&text_color=7c818c&icon_color=5294e2&title_color=5294e2&hide_rank=true&line_height=20" /></a>
+      <a href="https://github.com/${localStorage.getItem(
+        "gitStats"
+      )}?tab=repositories" ><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=${localStorage.getItem(
+      "gitStats"
+    )}&layout=compact&bg_color=21232b&border_color=21232b&text_color=7c818c&icon_color=5294e2&title_color=5294e2&card_height=500" /></a>`;
   } else if (!Mode) {
     //  light
-    document.getElementById("showDark").checked = false;
     document.querySelector(":root").style.setProperty("--text", "#00000");
     document.querySelector(":root").style.setProperty("--bg", "#dddddd");
     document
       .querySelector(":root")
       .style.setProperty("--blurColor", "#dddddd30");
+    document.getElementById("showDark").checked = false;
+    document.getElementById("git").innerHTML = `
+  <a href="https://github.com/${localStorage.getItem(
+    "gitStats"
+  )}" ><img src="https://github-readme-stats.vercel.app/api?username=${localStorage.getItem(
+      "gitStats"
+    )}&show_icons=true&locale=en&layout=compact&bg_color=dddddd&border_color=dddddd&text_color=7c818c&icon_color=5294e2&title_color=5294e2&hide_rank=true&line_height=20" /></a>
+  <a href="https://github.com/${localStorage.getItem(
+    "gitStats"
+  )}?tab=repositories" ><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=${localStorage.getItem(
+      "gitStats"
+    )}&layout=compact&bg_color=dddddd&border_color=dddddd&text_color=7c818c&icon_color=5294e2&title_color=5294e2&card_height=500" /></a>`;
   }
   return;
 }
@@ -126,13 +147,6 @@ function showGitStats() {
   const gitStats = localStorage.getItem("showGitStats");
   if (gitStats) {
     document.getElementById("showGitStats").checked = true;
-    document.getElementById("git").innerHTML = `
-    <img src="https://github-readme-stats.vercel.app/api?username=${localStorage.getItem(
-      "gitStats"
-    )}&show_icons=true&locale=en&layout=compact&bg_color=383c4a&text_color=7c818c&icon_color=5294e2&title_color=5294e2&hide_rank=true&line_height=20" />
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=${localStorage.getItem(
-      "gitStats"
-    )}&layout=compact&bg_color=383c4a&text_color=7c818c&icon_color=5294e2&title_color=5294e2&card_height=500" />`;
     document.querySelector("#git").style.setProperty("display", "flex");
   } else if (!gitStats) {
     document.getElementById("showGitStats").checked = false;
@@ -152,7 +166,6 @@ function showSearchBar() {
   )}/&sz=128'></img>`;
   localStorage.setItem("engine", document.getElementById("searchBar").value);
   const searchBar = localStorage.getItem("showSearchBar");
-  console.log("function showSearchBar");
   if (searchBar) {
     document.getElementById("showSearchBar").checked = true;
     document.querySelector("#search").style.setProperty("display", "flex");
@@ -192,9 +205,9 @@ function defaultLayout() {
 }
 
 //reset should be a default layout
-document
-  .getElementById("settingReset")
-  .addEventListener("click", defaultLayout());
+document.getElementById("settingReset").addEventListener("click", () => {
+  defaultLayout();
+});
 
 document.getElementById("settingSave").addEventListener("click", () => {
   //saving toggle states
@@ -345,21 +358,6 @@ document
     window.location = url;
   });
 
-/*
-
-//Save Data to Local Storage
-localStorage.setItem(key, value);
-
-//Read Data from Local Storage
-localStorage.getItem(key);
-
-//Remove Data from Local Storage
-localStorage.removeItem(key);
-
-//Remove All (Clear Local Storage)
-localStorage.clear();
-*/
-
 // ############################# Weather API ########################
 
 function getLocation() {
@@ -470,4 +468,39 @@ function getWeather() {
     getWeather();
   }
 }
+*/
+
+function newBookmarkFolder() {
+  var folderName = document.getElementById("folderName").value;
+  if (!localStorage.getItem("folders")) {
+    localStorage.setItem("folders", `[]`);
+  }
+
+  var oldFolder = JSON.parse(localStorage.getItem("folders")); // Array
+
+  oldFolder.push(folderName);
+  localStorage.setItem("folders", JSON.stringify(oldFolder));
+}
+
+function newBookmarkLink() {
+  var folderName = document.getElementById("folderName").value;
+  var oldFolder = JSON.parse(localStorage.getItem("folders"));
+  oldFolder[0].push({ link: folderName });
+  console.log(oldFolder[0]);
+  //localStorage.setItem("folders", JSON.stringify(oldFolder));
+}
+
+/*
+
+//Save Data to Local Storage
+localStorage.setItem(key, value);
+
+//Read Data from Local Storage
+localStorage.getItem(key);
+
+//Remove Data from Local Storage
+localStorage.removeItem(key);
+
+//Remove All (Clear Local Storage)
+localStorage.clear();
 */
