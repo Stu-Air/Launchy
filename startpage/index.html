@@ -225,16 +225,21 @@
           <label for="showBookmarks" class="toggleSwitch"></label>
         </div>
         <div id="textbox">
-          New folder :
-          <input
-            type="text"
-            id="folderName"
-            placeholder="New Folder Name"
-          /><button onclick="newBookmarkFolder()">Save</button>
+          New Folder Name :
+          <input type="text" id="folderName" placeholder="New Folder Name" />
+          <button id="folderSaveBtn">Save Folder</button>
+        </div>
+
+        <select id="folderSelect"></select>
+
+        <div id="textbox">
+          New Bookmark Name :
+          <input type="text" id="bookmarkLinkName" placeholder="URL Link" />
         </div>
         <div id="textbox">
           New Bookmark url :
-          <input type="text" id="bookmarkLink" placeholder="URL Link" />
+          <input type="text" id="bookmarkLinkUrl" placeholder="URL Link" />
+          <button id="linkSaveBtn">Save Link</button>
         </div>
         <div id="settingBtns">
           <div class="box-button">
@@ -244,6 +249,18 @@
             <div id="settingReset"><span>Reset All</span></div>
           </div>
         </div>
+        <section id="contact">
+          <div>
+            <p>Developed with ❤️ by <span class="font-bold">Stu-Air</span></p>
+            <a href="https://github.com/Stu-Air"
+              >Github <i class="fa-brands fa-github"></i
+            ></a>
+            /
+            <a href="mailto:stu-air@outlook.com"
+              >Mail <i class="fa-regular fa-envelope"></i
+            ></a>
+          </div>
+        </section>
       </div>
     </section>
     <script src="script.js"></script>

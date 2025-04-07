@@ -470,25 +470,61 @@ function getWeather() {
 }
 */
 
-function newBookmarkFolder() {
-  var folderName = document.getElementById("folderName").value;
+document.getElementById("folderSaveBtn").addEventListener("click", () => {
   if (!localStorage.getItem("folders")) {
     localStorage.setItem("folders", `[]`);
   }
-
-  var oldFolder = JSON.parse(localStorage.getItem("folders")); // Array
-
-  oldFolder.push(folderName);
-  localStorage.setItem("folders", JSON.stringify(oldFolder));
-}
-
-function newBookmarkLink() {
-  var folderName = document.getElementById("folderName").value;
+  //new Folder Name as object
+  let folderName = document.getElementById("folderName").value;
+  //folders Array that is made at start
   var oldFolder = JSON.parse(localStorage.getItem("folders"));
-  oldFolder[0].push({ link: folderName });
-  console.log(oldFolder[0]);
-  //localStorage.setItem("folders", JSON.stringify(oldFolder));
+  // push new Folder Name object into old Array
+  const newFolder = {
+    name: folderName,
+    bookmarks: {},
+  };
+  oldFolder.push(newFolder);
+  // reload the the new and old array to local storage again
+  localStorage.setItem("folders", JSON.stringify(oldFolder));
+  document.getElementById("folderName").value = "";
+});
+
+const data = JSON.parse(localStorage.getItem("folders"));
+for (let i = 0; i < data.length; i++) {
+  /*  document.getElementById("folderSelect")[document.getElementById("folderSelect").length] = new Option( data[i].name );
+   */
+  /*
+document.getElementById("folderSelect").innerHTML = `<option value="${[i]}">${data[i].name}</option>`
+*/
+
+  let option = document.createElement("option");
+  option.setAttribute("value", i);
+  option.textContent = data[i].name;
+  document.getElementById("folderSelect").appendChild(option);
 }
+
+document.getElementById("linkSaveBtn").addEventListener("click", () => {
+  var oldFolder = JSON.parse(localStorage.getItem("folders"));
+  //const newLink =
+  Object.assign(
+    oldFolder[document.getElementById("folderSelect").value].bookmarks,
+    ...oldFolder,
+    {
+      name: `${document.getElementById("bookmarkLinkName").value}`,
+      bookmarkUrl: `${document.getElementById("bookmarkLinkUrl").value}`,
+      siteIcon: `https://www.google.com/s2/favicons?domain=${
+        document.getElementById("folderSelect").value
+      }&sz=128`,
+    }
+  );
+  // var link = oldFolder[document.getElementById("folderSelect").value].bookmarks
+  //link.push(...oldFolder, newLink);
+  localStorage.setItem("folders", JSON.stringify(oldFolder));
+  document.getElementById("bookmarkLinkName").value = "";
+  document.getElementById("bookmarkLinkUrl").value = "";
+});
+
+console.log(data[document.getElementById("folderSelect").value].bookmarks);
 
 /*
 

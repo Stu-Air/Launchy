@@ -6,7 +6,7 @@ Both at this point are not fully working
 Not yet built or working
 
 - [ ] <s>settings page</s> will need to edit for adding and removing bookmarks
-  - [ ] nice animation slides in from side with <s>hamburger setting icon</s>
+  - [x] nice animation slides in from side with <s>hamburger setting icon</s>
   - [x] Custom name display box <s>(toggle to disable for added customisability)</s>
   - [x] Welcome background image <s>(toggle to disable for added customisability)</s>
   - [x] Smaller/profile image <s>(toggle to disable for added customisability)</s>

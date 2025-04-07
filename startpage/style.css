@@ -292,12 +292,11 @@ body {
 }
 
 #settings {
-  width: 95vw;
-  height: 100vh;
+  width: 75vw;
+  height: fit-content;
   font-size: large;
-  margin: 19% auto auto 9%;
+  margin: 0% auto auto 9%;
   align-items: left;
-  justify-content: center;
   display: none;
   flex-direction: column;
   position: absolute;
@@ -315,6 +314,7 @@ body {
   animation-duration: 3s;
   animation-name: slidein;
 }
+
 @keyframes slidein {
   from {
     margin-right: 200%;
@@ -447,4 +447,28 @@ body {
   padding: 0;
   margin-bottom: 10px;
   transform: translateY(10px);
+}
+
+#contact {
+  width: 70vw;
+  background: linear-gradient(var(--darkmode), var(--darkmode)) padding-box,
+    linear-gradient(145deg, rgba(221, 221, 221, 0.3) 35%, purple, var(--blue))
+      border-box;
+  border: 2px solid transparent;
+  padding: 32px 24px;
+  gap: 20px;
+  box-sizing: border-box;
+  border-radius: 16px;
+  font-size: large;
+  color: var(--text);
+  margin: auto;
+  text-align: center;
+}
+
+#contact i {
+  color: var(--text);
+}
+#contact a {
+  color: var(--text);
+  text-decoration: none;
 }
