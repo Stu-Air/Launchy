@@ -1,4 +1,4 @@
-# Custom home page for your browser
+# Welcome to Launchy (also known as LaunchyMcLaunchpad 🤦🏻)
 
 This has both standard HTML, CSS, JavaScript and React versions.
 Both at this point are not fully working
@@ -12,12 +12,12 @@ Not yet built or working
   - [x] Smaller/profile image <s>(toggle to disable for added customisability)</s>
   - [x] Openweather api key <s>(toggle to disable for added customisability)</s>
   - [x] Postcode region for fetching weather location
-  - [ ] Add new folder / tag (some how let user add icons or images)
-  - [ ] add new bookmark with a dropdown box of the folders
+  - [ ] <s>Add new folder / tag</s> (some how let user add icons or images)
+  - [x] add new bookmark with a dropdown box of the folders
   - [ ] add in delete button somehow
   - [x] reset all button NOT FULLY WORKING HOW I WANT IT
-- [ ] reusable component for folders/topics and bookmarks
-- [ ] auto gen for the flavicon beside bookmark link (test with full link for icons)
+- [x] reusable component for folders/topics and bookmarks
+- [x] auto gen for the flavicon beside bookmark link (test with full link for icons)
 - [x] change 3 day weather to re-align ( looks messy )
 - [x] light and Dark mode
 

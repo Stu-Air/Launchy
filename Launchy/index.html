@@ -52,79 +52,12 @@
       </button>
     </form>
     <div id="bookmarks">
-      <div class="folder">
-        <div class="folderHeader">
-          <div class="read">
-            <p><i class="fa-solid fa-book-open"></i> READ</p>
-            <a href="https://tldr.tech">
-              <div class="link">
-                <img
-                  class="linkImg"
-                  src="https://www.google.com/s2/favicons?domain=https://tldr.tech/&sz=128"
-                />tldr.tech
-              </div>
-            </a>
-            <a href="https://hackaday.com">
-              <div class="link">
-                <img
-                  class="linkImg"
-                  src="https://www.google.com/s2/favicons?domain=https://hackaday.com/&sz=128"
-                />hackaday
-              </div>
-            </a>
-            <a href="https://www.reddit.com/r/unixporn/">
-              <div class="link">
-                <img
-                  class="linkImg"
-                  src="https://www.google.com/s2/favicons?domain=https://www.reddit.com/r/unixporn/&sz=128"
-                />r/unixporn
-              </div>
-            </a>
-            <a href="https://dev.to/">
-              <div class="link">
-                <img
-                  class="linkImg"
-                  src="https://www.google.com/s2/favicons?domain=https://www.dev.to/&sz=128"
-                />dev.to
-              </div>
-            </a>
-          </div>
-          <div class="watch">
-            <i class="fa-solid fa-circle-play"></i> WATCH
-            <a href="https://www.youtube.com/">
-              <div class="link">
-                <img
-                  class="linkImg"
-                  src="https://www.google.com/s2/favicons?domain=https://www.youtube.com/&sz=128"
-                />youtube
-              </div>
-            </a>
-          </div>
-          <div class="game">
-            <i class="fa-solid fa-gamepad"></i> GAME
-            <div class="link">https://en.boardgamearena.com</div>
-            <div class="link">https://www.chess.com</div>
-            <div class="link">https://cssbattle.dev</div>
-          </div>
-          <div class="shop">
-            <i class="fa-solid fa-bag-shopping"></i> SHOP
-            <div class="link">https://www.aliexpress.com</div>
-            <div class="link">https://www.amazon.co.uk</div>
-          </div>
-          <div class="tools">
-            <i class="fa-solid fa-screwdriver-wrench"></i> TOOLS
-            <div class="link">https://claude.ai</div>
-            <div class="link">https://chatgpt.com</div>
-            <div class="link">https://picsum.photos</div>
-            <div class="link">https://farbvelo.elastiq.ch</div>
-          </div>
-          <div class="devTools">
-            <i class="fa-solid fa-code"></i> DEV TOOLS
-            <div class="link">https://it-tools.tech</div>
-            <div class="link">https://picsvg.com</div>
-            <div class="link">https://carbon.now.sh</div>
-            <div class="link">https://favicon.io</div>
-          </div>
+      <div class="folderContainer">
+        <!-- folder-->
+        <div class="folderHeaders">
+          <!-- folder Header-->
+          <div id="folders"></div>
+          <!-- read -->
         </div>
       </div>
     </div>
@@ -234,11 +167,15 @@
 
         <div id="textbox">
           New Bookmark Name :
-          <input type="text" id="bookmarkLinkName" placeholder="URL Link" />
+          <input type="text" id="bookmarkLinkName" placeholder="Display Name" />
         </div>
         <div id="textbox">
           New Bookmark url :
-          <input type="text" id="bookmarkLinkUrl" placeholder="URL Link" />
+          <input
+            type="text"
+            id="bookmarkLinkUrl"
+            placeholder="URL Link https://"
+          />
           <button id="linkSaveBtn">Save Link</button>
         </div>
         <div id="settingBtns">
@@ -266,3 +203,90 @@
     <script src="script.js"></script>
   </body>
 </html>
+
+<!--
+
+<p> READ</p>
+            <a href="https://tldr.tech">
+              <div class="link">
+                <img
+                  class="linkImg"
+                  src="https://www.google.com/s2/favicons?domain=https://tldr.tech/&sz=128"
+                />tldr.tech
+              </div>
+            </a>
+            <a href="https://hackaday.com">
+              <div class="link">
+                <img
+                  class="linkImg"
+                  src="https://www.google.com/s2/favicons?domain=https://hackaday.com/&sz=128"
+                />hackaday
+              </div>
+            </a>
+            <a href="https://www.reddit.com/r/unixporn/">
+              <div class="link">
+                <img
+                  class="linkImg"
+                  src="https://www.google.com/s2/favicons?domain=https://www.reddit.com/r/unixporn/&sz=128"
+                />r/unixporn
+              </div>
+            </a>
+            <a href="https://dev.to/">
+              <div class="link">
+                <img
+                  class="linkImg"
+                  src="https://www.google.com/s2/favicons?domain=https://www.dev.to/&sz=128"
+                />dev.to
+              </div>
+            </a>
+
+
+
+
+          </div>
+
+
+
+
+
+
+
+
+
+          <div class="game">
+            <i class="fa-solid fa-gamepad"></i> GAME
+            <div class="link">https://en.boardgamearena.com</div>
+            <div class="link">https://www.chess.com</div>
+            <div class="link">https://cssbattle.dev</div>
+          </div>
+
+
+
+
+          <div class="folderName">
+            <p> SHOP</p>
+            <div class="link">https://www.aliexpress.com</div>
+            <div class="link">https://www.amazon.co.uk</div>
+          </div>
+
+           <div class="tools">
+            <i class="fa-solid fa-screwdriver-wrench"></i> TOOLS
+            <div class="link">https://claude.ai</div>
+            <div class="link">https://chatgpt.com</div>
+            <div class="link">https://picsum.photos</div>
+            <div class="link">https://farbvelo.elastiq.ch</div>
+          </div>
+
+          <div class="devTools">
+            <i class="fa-solid fa-code"></i> DEV TOOLS
+            <div class="link">https://it-tools.tech</div>
+            <div class="link">https://picsvg.com</div>
+            <div class="link">https://carbon.now.sh</div>
+            <div class="link">https://favicon.io</div>
+          </div>
+        </div>
+
+
+
+
+-->

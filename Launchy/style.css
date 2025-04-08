@@ -232,7 +232,7 @@ body {
   margin-top: 3%;
 }
 
-.folderHeader {
+.folderHeaders {
   width: 100%;
   height: fit-content;
   font-family: "Indie Flower", sans-serif;
@@ -242,16 +242,17 @@ body {
   gap: 5%;
   font-size: 25px;
   text-align: center;
-}
-
-.folder {
-  display: flex;
   flex-direction: column;
   align-items: center;
   justify-items: center;
 }
 
-.link {
+.folderHeaders a {
+  text-decoration: none;
+  color: #ddd;
+}
+
+#link {
   width: 100%;
   height: fit-content;
   padding: 3% 5%;
@@ -263,12 +264,8 @@ body {
   display: flex;
   align-items: center;
 }
-.folder a {
-  text-decoration: none;
-  color: var(--text);
-}
 
-.linkImg {
+#linkImg {
   height: fit-content;
   width: 25px;
   padding-right: 6px;
