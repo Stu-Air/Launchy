@@ -473,7 +473,7 @@ function getWeather() {
 document.getElementById("folderSaveBtn").addEventListener("click", () => {
   if (!localStorage.getItem("folders")) {
     localStorage.setItem("folders", `[]`);
-    localStorage.setItem("bookmarks", `[]`);
+    //localStorage.setItem("bookmarks", `[]`);
   }
   //new Folder Name
   let folderName = document.getElementById("folderName").value;
@@ -484,9 +484,14 @@ document.getElementById("folderSaveBtn").addEventListener("click", () => {
   // reload the the new and old array to local storage again
   localStorage.setItem("folders", JSON.stringify(oldFolder));
   document.getElementById("folderName").value = "";
+  folderReload();
 });
 
 document.getElementById("linkSaveBtn").addEventListener("click", () => {
+  if (!localStorage.getItem("bookmarks")) {
+    localStorage.setItem("bookmarks", `[]`);
+  }
+
   // New link Name as object
   const newLink = {
     folder: `${document.getElementById("folderSelect").value}`,
@@ -504,95 +509,41 @@ document.getElementById("linkSaveBtn").addEventListener("click", () => {
   localStorage.setItem("bookmarks", JSON.stringify(oldFolder));
   document.getElementById("bookmarkLinkName").value = "";
   document.getElementById("bookmarkLinkUrl").value = "";
+  bookmarkReload();
 });
 
-for (let i = 0; i < JSON.parse(localStorage.getItem("folders")).length; i++) {
+const folders = JSON.parse(localStorage.getItem("folders"));
+for (let i = 0; i < folders.length; i++) {
   const folderDropdown = document.createElement("option");
   folderDropdown.setAttribute("value", i);
-  folderDropdown.textContent = JSON.parse(localStorage.getItem("folders"))[i];
+  folderDropdown.textContent = folders[i];
   if (!localStorage.getItem("folders")) {
     document.getElementById("folderSelect").value = "";
   }
 
   document.getElementById("folderSelect").appendChild(folderDropdown);
 
-  const folderHeader = document.createElement("p");
-  folderHeader.innerHTML = JSON.parse(localStorage.getItem("folders"))[i];
-  document.getElementById("folders").appendChild(folderHeader);
+  const folderHeader = document.createElement("div");
+  folderHeader.id = document.getElementById("folderSelect")[i].value;
+  folderHeader.innerHTML = folders[i];
+  document.getElementById("folderHeader").appendChild(folderHeader);
 }
 
-for (let i = 0; i < JSON.parse(localStorage.getItem("bookmarks")).length; i++) {
+const bookmarks = JSON.parse(localStorage.getItem("bookmarks"));
+for (let i = 0; i < bookmarks.length; i++) {
   const linkImg = document.createElement("img");
   linkImg.id = "linkImg";
-  linkImg.src = JSON.parse(localStorage.getItem("bookmarks"))[i].siteIcon;
+  linkImg.src = bookmarks[i].siteIcon;
 
   const linkDiv = document.createElement("div");
   linkDiv.id = "link";
-  linkDiv.innerText = JSON.parse(localStorage.getItem("bookmarks"))[i].name;
+  linkDiv.innerText = bookmarks[i].name;
   linkDiv.appendChild(linkImg);
 
   const linkA = document.createElement("a");
   linkA.id = "linkA";
-  linkA.href = JSON.parse(localStorage.getItem("bookmarks"))[i].bookmarkUrl;
+  linkA.href = bookmarks[i].bookmarkUrl;
   linkA.appendChild(linkDiv);
 
-  document.getElementById("folders").appendChild(linkA);
+  document.getElementById(bookmarks[i].folder).appendChild(linkA);
 }
-
-/*
-
-
-
-      <div class="folderContainer">
-        <div class="folderHeaders">
-          <div id="folders">
-          <p>Shopping </p>
-          <a id="linkA" href="www.amazon.co.uk">
-            <[object HTMLDivElement]
-          </a>
-          </div>
-        </div>
-      </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <a href="https://dev.to/">
-      <div class="link">
-        <img class="linkImg" src="https://www.google.com/s2/favicons?domain=https://www.dev.to/&sz=128"/>dev.to
-      </div>
-    </a>
-*/
-
-/*
-
-//Save Data to Local Storage
-localStorage.setItem(key, value);
-
-//Read Data from Local Storage
-localStorage.getItem(key);
-
-//Remove Data from Local Storage
-localStorage.removeItem(key);
-
-//Remove All (Clear Local Storage)
-localStorage.clear();
-*/

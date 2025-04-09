@@ -227,12 +227,8 @@ body {
 }
 
 /* ################# Bookmark Section ###################### */
-#bookmarks {
-  display: flex;
-  margin-top: 3%;
-}
 
-.folderHeaders {
+#folderHeader {
   width: 100%;
   height: fit-content;
   font-family: "Indie Flower", sans-serif;
@@ -242,12 +238,76 @@ body {
   gap: 5%;
   font-size: 25px;
   text-align: center;
+}
+
+#folder {
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-items: center;
 }
 
-.folderHeaders a {
+#link {
+  width: 100%;
+  height: fit-content;
+  padding: 3% 5%;
+  border-radius: 10px;
+  box-shadow: 1px 1px 3px white;
+  background-color: #ffffff50;
+  backdrop-filter: 3px blur;
+  margin-top: 10%;
+  display: flex;
+  align-items: center;
+}
+#folder a {
+  text-decoration: none;
+  color: #ddd;
+}
+
+#linkImg {
+  height: fit-content;
+  width: 25px;
+  padding-right: 6px;
+}
+
+/*    NEWER STUFF 
+#bookmarks {
+  display: flex;
+  margin-top: 3%;
+}
+
+#folderHeaders {
+  width: 100%;
+  height: fit-content;
+  font-family: "Indie Flower", sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 5%;
+  font-size: 25px;
+  text-align: center;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+
+
+
+  border:2px solid red;
+}
+
+
+
+#folders{
+  width:100px;
+  height:fit-content;
+  display: flex;
+  flex-direction: column;
+
+
+  border: 5px solid blue;
+}
+
+#folders a {
   text-decoration: none;
   color: #ddd;
 }
@@ -270,6 +330,8 @@ body {
   width: 25px;
   padding-right: 6px;
 }
+
+*/
 
 /* ################# Settings Section ######################*/
 #menuOpen {
