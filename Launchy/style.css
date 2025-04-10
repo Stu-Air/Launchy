@@ -249,8 +249,9 @@ body {
 
 #link {
   width: 100%;
-  height: fit-content;
+  height: 40px;
   padding: 3% 5%;
+  font-size: x-large;
   border-radius: 10px;
   box-shadow: 1px 1px 3px white;
   background-color: #ffffff50;
@@ -258,6 +259,8 @@ body {
   margin-top: 10%;
   display: flex;
   align-items: center;
+  flex-direction: row-reverse;
+  justify-content: left;
 }
 #folder a {
   text-decoration: none;
@@ -269,69 +272,6 @@ body {
   width: 25px;
   padding-right: 6px;
 }
-
-/*    NEWER STUFF 
-#bookmarks {
-  display: flex;
-  margin-top: 3%;
-}
-
-#folderHeaders {
-  width: 100%;
-  height: fit-content;
-  font-family: "Indie Flower", sans-serif;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 5%;
-  font-size: 25px;
-  text-align: center;
-  flex-direction: row;
-  align-items: center;
-  justify-items: center;
-
-
-
-  border:2px solid red;
-}
-
-
-
-#folders{
-  width:100px;
-  height:fit-content;
-  display: flex;
-  flex-direction: column;
-
-
-  border: 5px solid blue;
-}
-
-#folders a {
-  text-decoration: none;
-  color: #ddd;
-}
-
-#link {
-  width: 100%;
-  height: fit-content;
-  padding: 3% 5%;
-  border-radius: 10px;
-  box-shadow: 1px 1px 3px white;
-  background-color: #ffffff50;
-  backdrop-filter: 3px blur;
-  margin-top: 10%;
-  display: flex;
-  align-items: center;
-}
-
-#linkImg {
-  height: fit-content;
-  width: 25px;
-  padding-right: 6px;
-}
-
-*/
 
 /* ################# Settings Section ######################*/
 #menuOpen {
@@ -468,6 +408,18 @@ body {
 #showSearchBar:checked + .toggleSwitch {
   background-color: #e95420;
   transition-duration: 0.2s;
+}
+
+.dropdown {
+  width: 100%;
+  margin: 4% auto;
+  display: flex;
+  gap: 3%;
+}
+
+#folderSelect,
+#linkSelect {
+  width: 30%;
 }
 
 #settingBtns {

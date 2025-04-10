@@ -17,7 +17,7 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <title></title>
   </head>
-  <body onload="start()">
+  <body onload="firstRun()">
     <div id="menuOpen" onclick="settingOpen()">
       <i class="fa-solid fa-bars"></i>
     </div>
@@ -152,20 +152,27 @@
           <input type="checkbox" id="showBookmarks" />
           <label for="showBookmarks" class="toggleSwitch"></label>
         </div>
+
         <div id="textbox">
-          New Folder Name :
+          Folder Name :
           <input type="text" id="folderName" placeholder="New Folder Name" />
           <button id="folderSaveBtn">Save Folder</button>
         </div>
 
-        <select id="folderSelect"></select>
+        <div class="dropdown">
+          Folder to add bookmark :
+          <select id="folderSelect"></select>
+          <i id="removeFolder" class="fa-regular fa-trash-can"></i>deletes
+          bookmarks!!
+        </div>
 
         <div id="textbox">
-          New Bookmark Name :
+          Bookmark name :
           <input type="text" id="bookmarkLinkName" placeholder="Display Name" />
         </div>
+
         <div id="textbox">
-          New Bookmark url :
+          Bookmark url :
           <input
             type="text"
             id="bookmarkLinkUrl"
@@ -173,6 +180,12 @@
           />
           <button id="linkSaveBtn">Save Link</button>
         </div>
+        <div class="dropdown">
+          Delete bookmarks in folder :
+          <select id="linkSelect"></select>
+          <i id="removeLink" class="fa-regular fa-trash-can"></i>
+        </div>
+
         <div id="settingBtns">
           <div class="box-button">
             <div id="settingSave"><span>Save</span></div>
@@ -181,9 +194,13 @@
             <div id="settingReset"><span>Reset All</span></div>
           </div>
         </div>
+
         <section id="contact">
           <div>
-            <p>Developed with ❤️ by <span class="font-bold">Stu-Air</span></p>
+            <p>
+              Launchy was developed with ❤️ by
+              <span class="font-bold">Stu-Air</span>
+            </p>
             <a href="https://github.com/Stu-Air"
               >Github <i class="fa-brands fa-github"></i
             ></a>
@@ -200,123 +217,31 @@
 </html>
 
 <!--
-
-<p> READ</p>
-            <a href="https://tldr.tech">
-              <div class="link">
-                <img
-                  class="linkImg"
-                  src="https://www.google.com/s2/favicons?domain=https://tldr.tech/&sz=128"
-                />tldr.tech
-              </div>
-            </a>
-
-
-
-      <div class="folder">
-        <div id="folderHeader">
-        <div id="folders">
-          test1
-          <a id="linkA" href="www.amazon.com">
-            <div id="link">
-              test link 4
-              <img id="linkImg" src="https://www.google.com/s2/favicons?domain=www.amazon.com&amp;sz=128"></div></a><a id="linkA" href="www.aliexpress.com"><div id="link">test link 3<img id="linkImg" src="https://www.google.com/s2/favicons?domain=www.aliexpress.com&amp;sz=128"></div></a><a id="linkA" href="https://reddit.com"><div id="link">test link 2<img id="linkImg" src="https://www.google.com/s2/favicons?domain=https://reddit.com&amp;sz=128"></div></a><a id="linkA" href="https://testing.com"><div id="link">test link 1<img id="linkImg" src="https://www.google.com/s2/favicons?domain=https://testing.com&amp;sz=128">
-            </div>
-          </a>
-        </div>
-        <div id="folders">
-          test2
-        </div>
-        <div id="folders">
-          test3
-        </div>
-        <div id="folders">
-          test4
-        </div>
-      </div> 
-    </div>
-  </div>
-
-
-
-
-
-
-
-
-
+          <div class="read">
             <a href="https://hackaday.com">
-              <div class="link">
-                <img
-                  class="linkImg"
-                  src="https://www.google.com/s2/favicons?domain=https://hackaday.com/&sz=128"
-                />hackaday
-              </div>
-            </a>
             <a href="https://www.reddit.com/r/unixporn/">
-              <div class="link">
-                <img
-                  class="linkImg"
-                  src="https://www.google.com/s2/favicons?domain=https://www.reddit.com/r/unixporn/&sz=128"
-                />r/unixporn
-              </div>
-            </a>
             <a href="https://dev.to/">
-              <div class="link">
-                <img
-                  class="linkImg"
-                  src="https://www.google.com/s2/favicons?domain=https://www.dev.to/&sz=128"
-                />dev.to
-              </div>
-            </a>
-
-
-
-
-          </div>
-
-
-
-
-
-
-
-
 
           <div class="game">
             <i class="fa-solid fa-gamepad"></i> GAME
             <div class="link">https://en.boardgamearena.com</div>
             <div class="link">https://www.chess.com</div>
             <div class="link">https://cssbattle.dev</div>
-          </div>
 
-
-
-
-          <div class="folderName">
-            <p> SHOP</p>
+          <div class="shop">
             <div class="link">https://www.aliexpress.com</div>
             <div class="link">https://www.amazon.co.uk</div>
-          </div>
 
-           <div class="tools">
-            <i class="fa-solid fa-screwdriver-wrench"></i> TOOLS
+          <div class="tools">
             <div class="link">https://claude.ai</div>
             <div class="link">https://chatgpt.com</div>
             <div class="link">https://picsum.photos</div>
             <div class="link">https://farbvelo.elastiq.ch</div>
-          </div>
+
 
           <div class="devTools">
-            <i class="fa-solid fa-code"></i> DEV TOOLS
             <div class="link">https://it-tools.tech</div>
             <div class="link">https://picsvg.com</div>
             <div class="link">https://carbon.now.sh</div>
             <div class="link">https://favicon.io</div>
-          </div>
-        </div>
-
-
-
-
 -->
