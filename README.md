@@ -30,4 +30,11 @@ Known Issues :
 - [ ] when adding folders and bookmarks it can visually duplicate
       but a quick page refresh and it all good again.
 
-      Have fun and feel free to contact.
+install for the moment anyway
+1. Download and place launchy folder anywhere you wish.
+2. Open your browsers setting and find homepage
+3. point the browser to the index.html file inside the launchy folder
+4. have fun!! 
+
+
+ Have fun and feel free to contact.
