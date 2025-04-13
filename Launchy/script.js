@@ -1,7 +1,6 @@
 // ############################# Onload Functions ########################
 function start() {
   localStorage.setItem("firstRun", "true");
-
   startTime();
   greet();
   getWeather();
@@ -21,8 +20,9 @@ function start() {
 function firstRun() {
   if (!localStorage.getItem("firstRun")) {
     defaultLayout();
+  } else {
+    start();
   }
-  start();
 }
 
 // ############################# Settings ########################
@@ -511,7 +511,6 @@ function getWeather() {
 document.getElementById("folderSaveBtn").addEventListener("click", () => {
   if (!localStorage.getItem("folders")) {
     localStorage.setItem("folders", `[]`);
-    //localStorage.setItem("bookmarks", `[]`);
   }
   //new Folder Name
   let folderName = document.getElementById("folderName").value;
@@ -521,9 +520,28 @@ document.getElementById("folderSaveBtn").addEventListener("click", () => {
   oldFolder.push(folderName);
   // reload the the new and old array to local storage again
   localStorage.setItem("folders", JSON.stringify(oldFolder));
+  const folderDropdown = document.createElement("option");
+  folderDropdown.setAttribute("value", folders.length + 1);
+  folderDropdown.innerText = folderName;
+  document.getElementById("folderSelect").append(folderDropdown);
   document.getElementById("folderName").value = "";
-  folderReload();
 });
+
+function folderReload() {
+  for (let i = 0; i < folders.length; i++) {
+    const folderDropdown = document.createElement("option");
+    folderDropdown.setAttribute("value", i);
+    folderDropdown.innerText = folders[i];
+
+    document.getElementById("folderSelect").append(folderDropdown);
+
+    const folderHeader = document.createElement("div");
+    folderHeader.id = document.getElementById("folderSelect")[i].value;
+    folderHeader.innerHTML = folders[i];
+    document.getElementById("folderHeader").append(folderHeader);
+  }
+}
+
 document.getElementById("linkSaveBtn").addEventListener("click", () => {
   if (!localStorage.getItem("bookmarks")) {
     localStorage.setItem("bookmarks", `[]`);
@@ -543,30 +561,33 @@ document.getElementById("linkSaveBtn").addEventListener("click", () => {
   oldFolder.push(newLink);
   // reload the the new and old array to local storage again
   localStorage.setItem("bookmarks", JSON.stringify(oldFolder));
+
+  const linkDropdown = document.createElement("option");
+  linkDropdown.setAttribute("value", bookmarks.length + 1);
+  linkDropdown.innerText = newLink.name;
+  document.getElementById("linkSelect").append(linkDropdown);
+
+  const linkImg = document.createElement("img");
+  linkImg.id = "linkImg";
+  linkImg.src = newLink.siteIcon;
+
+  const linkDiv = document.createElement("div");
+  linkDiv.id = "link";
+  linkDiv.innerText = newLink.name;
+  linkDiv.append(linkImg);
+
+  const linkA = document.createElement("a");
+  linkA.id = "linkA";
+  linkA.href = newLink.bookmarkUrl;
+  linkA.append(linkDiv);
+
+  document.getElementById(newLink.folder).append(linkA);
+
   document.getElementById("bookmarkLinkName").value = "";
   document.getElementById("bookmarkLinkUrl").value = "";
 });
 
-function folderReload() {
-  const folders = JSON.parse(localStorage.getItem("folders"));
-  for (let i = 0; i < folders.length; i++) {
-    const folderDropdown = document.createElement("option");
-    folderDropdown.setAttribute("value", i);
-    folderDropdown.textContent = folders[i];
-    if (!localStorage.getItem("folders")) {
-      document.getElementById("folderSelect").value = "";
-    }
-    document.getElementById("folderSelect").appendChild(folderDropdown);
-
-    const folderHeader = document.createElement("div");
-    folderHeader.id = document.getElementById("folderSelect")[i].value;
-    folderHeader.innerHTML = folders[i];
-    document.getElementById("folderHeader").appendChild(folderHeader);
-  }
-}
-
 const linkReload = () => {
-  const bookmarks = JSON.parse(localStorage.getItem("bookmarks"));
   for (let i = 0; i < bookmarks.length; i++) {
     const linkDropdown = document.createElement("option");
     linkDropdown.setAttribute("value", i);
@@ -575,12 +596,7 @@ const linkReload = () => {
     if (!localStorage.getItem("bookmarks")) {
       document.getElementById("linkSelect").value = "";
     }
-    document.getElementById("linkSelect").appendChild(linkDropdown);
-
-    //b = bookmarks.filter(e => e.folder === document.getElementById("folderSelect").value);
-    //b.forEach(bookmarks.findIndex(e => e.folder === bookmarks.name));
-
-    //console.log(bookmarks.filter(function(el) { return el.folder == document.getElementById("folderSelect").value; }))
+    document.getElementById("linkSelect").append(linkDropdown);
 
     const linkImg = document.createElement("img");
     linkImg.id = "linkImg";
@@ -589,13 +605,13 @@ const linkReload = () => {
     const linkDiv = document.createElement("div");
     linkDiv.id = "link";
     linkDiv.innerText = bookmarks[i].name;
-    linkDiv.appendChild(linkImg);
+    linkDiv.append(linkImg);
 
     const linkA = document.createElement("a");
     linkA.id = "linkA";
     linkA.href = bookmarks[i].bookmarkUrl;
-    linkA.appendChild(linkDiv);
+    linkA.append(linkDiv);
 
-    document.getElementById(bookmarks[i].folder).appendChild(linkA);
+    document.getElementById(bookmarks[i].folder).append(linkA);
   }
 };
