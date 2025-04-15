@@ -5,7 +5,7 @@ This project has both standard HTML, CSS, JavaScript and React versions.
 Project is just a learning experience for me, but you are free to use take and edit.
 feature requests are welcome.
 
-Launchy is a customisable homepage that is mobile friendly.
+Launchy is a customisable homepage.
 
 Features include
 
@@ -27,4 +27,13 @@ Both at this point are not fully working ( html, css, js version far more advanc
 
 Known Issues :
 
-      Have fun and feel free to contact.
+---
+
+install for the moment anyway
+
+1. Download and place launchy folder anywhere you wish.
+2. Open your browsers setting and find homepage
+3. point the browser to the index.html file inside the launchy folder
+4. have fun!!
+
+## Have fun and feel free to contact.
